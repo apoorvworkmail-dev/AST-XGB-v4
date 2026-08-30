@@ -1,0 +1,36 @@
+{
+  "random": {
+    "train_rows": 11216,
+    "val_rows": 1402,
+    "test_rows": 1403,
+    "overlap_train_val": 0,
+    "overlap_train_test": 0,
+    "overlap_val_test": 0,
+    "leakage": false
+  },
+  "temporal": {
+    "train_rows": 9814,
+    "val_rows": 2103,
+    "test_rows": 2104,
+    "train_min_date": "2018-05-15",
+    "train_max_date": "2021-08-15",
+    "val_min_date": "2021-08-15",
+    "val_max_date": "2022-05-15",
+    "test_min_date": "2022-05-15",
+    "test_max_date": "2022-11-15",
+    "overlap_train_val": 0,
+    "overlap_train_test": 0,
+    "overlap_val_test": 0,
+    "leakage": false
+  },
+  "geographic": {
+    "train_rows": 9773,
+    "test_rows": 4248,
+    "held_out_cities": [
+      "Pune",
+      "Kolkata"
+    ],
+    "overlap_train_test": 0,
+    "leakage": false
+  }
+}

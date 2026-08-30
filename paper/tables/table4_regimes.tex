@@ -1,0 +1,15 @@
+\begin{table}[htbp]
+\centering
+\caption{GMM Market Regime Stratified Accuracy Breakdown and Dynamic Ensemble Learner Weights}
+\label{tab:regime_breakdown}
+\begin{tabular}{llrrrr}
+\toprule
+\textbf{Latent Regime} & \textbf{Dominant Characteristics} & \textbf{XGB Weight} & \textbf{LGBM Weight} & \textbf{RF Weight} & \textbf{Regime MAE (\$)} \\
+\midrule
+Regime 1: Stable & Balanced Volume, Low Volatility & 0.35 & 0.35 & 0.15 & 38,200 \\
+Regime 2: Growth & High Positive Growth, High Volume & 0.52 & 0.32 & 0.08 & 44,500 \\
+Regime 3: Cooling & Negative Price Delta, Declining Volume & 0.40 & 0.42 & 0.10 & 41,100 \\
+Regime 4: Shock & High Volatility Spike, High Dispersion & 0.28 & 0.22 & 0.30 & 49,800 \\
+\bottomrule
+\end{tabular}
+\end{table}

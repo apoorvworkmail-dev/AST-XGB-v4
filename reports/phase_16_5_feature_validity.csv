@@ -1,0 +1,16 @@
+feature_name,feature_group,missing_percentage,leakage_risk,validity_status,remedy
+builtup_area_sqft,PROPERTY,0.0,None,VALID,Keep as is
+bhk,PROPERTY,0.0,None,VALID,Keep as is
+bathrooms,PROPERTY,0.0,None,VALID,Keep as is
+floor_no,PROPERTY,36.0,None,VALID,Impute with city/locality median
+total_floors,PROPERTY,49.2,None,VALID,Impute with city/locality median
+carpet_area_sqft,PROPERTY,89.36,None,VALID,Impute with 0.83 builtup factor
+rera_registered,RERA,0.0,None,VALID,Keep as is
+completion_percent,RERA,64.2,None,VALID,Keep as is
+aqi,CPCB,0.0,None,VALID,Keep as is (lagged at t-1)
+hist_hpi_market,MARKET,0.0,None,VALID,Keep as is (lagged at t-1)
+repo_rate,RBI,0.0,None,VALID,Keep as is (lagged at t-1)
+hist_cpi_index,MOSPI,0.0,None,VALID,Keep as is (lagged at t-1)
+rental_yield_pct,RENTAL,24.5,CRITICAL_TARGET_LEAKAGE,INVALID,Remove or rebuild with locality median denominator
+derived_rental_yield_log1p,RENTAL,24.5,CRITICAL_TARGET_LEAKAGE,INVALID,Remove or rebuild with locality median denominator
+target_locality_median_ppsf,RENTAL,0.0,IN_FOLD_TARGET_LEAKAGE,NEEDS_REPAIR,Apply leave-one-out exclusion

@@ -1,0 +1,22 @@
+{
+  "python_version": "3.11.5",
+  "pandas_version": "3.0.5",
+  "numpy_version": "2.4.6",
+  "xgboost_version": "3.2.0",
+  "random_seed": 42,
+  "feature_count": 84,
+  "temporal_splits": {
+    "train_rows": 9814,
+    "val_rows": 2103,
+    "test_rows": 2104
+  },
+  "random_splits": {
+    "train_rows": 11216,
+    "val_rows": 1402,
+    "test_rows": 1403
+  },
+  "geographic_splits": {
+    "train_rows": 9773,
+    "test_rows": 4248
+  }
+}

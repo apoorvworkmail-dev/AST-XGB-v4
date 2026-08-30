@@ -1,0 +1,5 @@
+feature_name,leakage_type,formula,leakage_path,severity,status,remedy
+rental_yield_pct,TARGET_LEAKAGE,"(annual_rent_estimate_inr / price_inr) * 100",Target price inr in denominator,CRITICAL,FAIL,Replace denominator price_inr with train-fold locality median price
+derived_rental_yield_log1p,TARGET_LEAKAGE,log1p(rental_yield_pct),Target price inr in denominator (inherited),CRITICAL,FAIL,Rebuild from leakage-free rental yield
+target_locality_median_ppsf,IN_FOLD_TARGET_LEAKAGE,median(price_per_sqft),Current property own price in median group,HIGH,NEEDS_REPAIR,Exclude current property own transaction from group (leave-one-out)
+price_per_sqft,TARGET_LEAKAGE,price_inr / builtup_area_sqft,Target price inr in numerator,CRITICAL,EXCLUDED,Dropped from input feature list during Phase 12

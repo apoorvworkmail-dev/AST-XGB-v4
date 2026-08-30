@@ -1,0 +1,11 @@
+category,weight_percentage,score,weighted_score,status,findings
+Data integrity,15,100,15.0,PASS,Row counts unique and validated
+Feature validity,15,80,12.0,WARNING,Dropped low-coverage features, but rental yield has target leakage
+Leakage prevention,25,20,5.0,FAIL,Critical target leakage found in rental yield and in-fold locality median
+Split methodology,15,100,15.0,PASS,Chronological temporal split and out-of-fold aggregates validated
+Model evaluation,10,100,10.0,PASS,Baseline and tuned models evaluated correctly on untouched test set
+XGBoost validity,5,100,5.0,PASS,Tuned hyperparameters saved and validated
+SHAP validity,5,80,4.0,WARNING,SHAP calculated on model containing target leakage
+Reproducibility,5,100,5.0,PASS,Seeds, package versions, and preprocessors saved
+Research validity,5,80,4.0,WARNING,Multi-source pipeline supported, but target leakage invalidates claims
+Total,100,74.4,74.4,NOT_READY,Failed readiness audit due to critical target leakage

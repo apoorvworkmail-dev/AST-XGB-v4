@@ -1,0 +1,67 @@
+feature_name,feature_group,data_type,source,formula,historical_window,aggregation_method,current_property_excluded,future_data_excluded,validation_test_targets_excluded,leakage_risk
+property_master_id,METADATA,categorical,property_master_v11.csv,Direct Mapping,N/A,N/A,YES,YES,YES,None
+price_inr,TARGET,numeric,property_master_v11.csv,Direct Mapping,N/A,N/A,N/A,N/A,N/A,Target column (excluded from X)
+city,PROPERTY,categorical,property_master_v11.csv,Direct Mapping,N/A,N/A,N/A,N/A,N/A,None
+locality,PROPERTY,categorical,property_master_v11.csv,Direct Mapping,N/A,N/A,N/A,N/A,N/A,None
+property_type,PROPERTY,categorical,property_master_v11.csv,Direct Mapping,N/A,N/A,N/A,N/A,N/A,None
+bhk,PROPERTY,numeric,property_master_v11.csv,Direct Mapping,N/A,N/A,N/A,N/A,N/A,None
+bathrooms,PROPERTY,numeric,property_master_v11.csv,Direct Mapping,N/A,N/A,N/A,N/A,N/A,None
+balconies,PROPERTY,numeric,property_master_v11.csv,Direct Mapping,N/A,N/A,N/A,N/A,N/A,None
+builtup_area_sqft,PROPERTY,numeric,property_master_v11.csv,Direct Mapping,N/A,N/A,N/A,N/A,N/A,None
+floor_no,PROPERTY,numeric,property_master_v11.csv,Direct Mapping,N/A,N/A,N/A,N/A,N/A,None
+total_floors,PROPERTY,numeric,property_master_v11.csv,Direct Mapping,N/A,N/A,N/A,N/A,N/A,None
+parking,PROPERTY,numeric,property_master_v11.csv,Direct Mapping,N/A,N/A,N/A,N/A,N/A,None
+furnishing,PROPERTY,categorical,property_master_v11.csv,Direct Mapping,N/A,N/A,N/A,N/A,N/A,None
+facing,PROPERTY,categorical,property_master_v11.csv,Direct Mapping,N/A,N/A,N/A,N/A,N/A,None
+latitude,PROPERTY,numeric,property_master_v11.csv,Direct Mapping,N/A,N/A,N/A,N/A,N/A,None
+longitude,PROPERTY,numeric,property_master_v11.csv,Direct Mapping,N/A,N/A,N/A,N/A,N/A,None
+schools_distance_km,PROPERTY,numeric,property_master_v11.csv,Direct Mapping,N/A,N/A,N/A,N/A,N/A,None
+hospitals_distance_km,PROPERTY,numeric,property_master_v11.csv,Direct Mapping,N/A,N/A,N/A,N/A,N/A,None
+metro_stations_distance_km,PROPERTY,numeric,property_master_v11.csv,Direct Mapping,N/A,N/A,N/A,N/A,N/A,None
+railway_stations_distance_km,PROPERTY,numeric,property_master_v11.csv,Direct Mapping,N/A,N/A,N/A,N/A,N/A,None
+malls_distance_km,PROPERTY,numeric,property_master_v11.csv,Direct Mapping,N/A,N/A,N/A,N/A,N/A,None
+parks_distance_km,PROPERTY,numeric,property_master_v11.csv,Direct Mapping,N/A,N/A,N/A,N/A,N/A,None
+transit_stations_distance_km,PROPERTY,numeric,property_master_v11.csv,Direct Mapping,N/A,N/A,N/A,N/A,N/A,None
+accessibility_score,PROPERTY,numeric,property_master_v11.csv,Direct Mapping,N/A,N/A,N/A,N/A,N/A,None
+avg_monthly_rent,PROPERTY,numeric,property_master_v11.csv,Direct Mapping,N/A,N/A,N/A,N/A,N/A,None
+median_monthly_rent,PROPERTY,numeric,property_master_v11.csv,Direct Mapping,N/A,N/A,N/A,N/A,N/A,None
+median_rent_per_sqft,PROPERTY,numeric,property_master_v11.csv,Direct Mapping,N/A,N/A,N/A,N/A,N/A,None
+rental_listing_count,PROPERTY,numeric,property_master_v11.csv,Direct Mapping,N/A,N/A,N/A,N/A,N/A,None
+hist_hpi_market,PROPERTY,numeric,property_master_v11.csv,Direct Mapping,N/A,N/A,N/A,N/A,N/A,None
+hist_qoq_growth,PROPERTY,numeric,property_master_v11.csv,Direct Mapping,N/A,N/A,N/A,N/A,N/A,None
+hist_yoy_growth,PROPERTY,numeric,property_master_v11.csv,Direct Mapping,N/A,N/A,N/A,N/A,N/A,None
+hist_market_regime,PROPERTY,categorical,property_master_v11.csv,Direct Mapping,N/A,N/A,N/A,N/A,N/A,None
+repo_rate,PROPERTY,numeric,property_master_v11.csv,Direct Mapping,N/A,N/A,N/A,N/A,N/A,None
+bank_rate,PROPERTY,numeric,property_master_v11.csv,Direct Mapping,N/A,N/A,N/A,N/A,N/A,None
+CRR,PROPERTY,numeric,property_master_v11.csv,Direct Mapping,N/A,N/A,N/A,N/A,N/A,None
+SLR,PROPERTY,numeric,property_master_v11.csv,Direct Mapping,N/A,N/A,N/A,N/A,N/A,None
+repo_rate_change,PROPERTY,numeric,property_master_v11.csv,Direct Mapping,N/A,N/A,N/A,N/A,N/A,None
+repo_rate_3m_change,PROPERTY,numeric,property_master_v11.csv,Direct Mapping,N/A,N/A,N/A,N/A,N/A,None
+repo_rate_12m_change,PROPERTY,numeric,property_master_v11.csv,Direct Mapping,N/A,N/A,N/A,N/A,N/A,None
+hist_cpi_index,PROPERTY,numeric,property_master_v11.csv,Direct Mapping,N/A,N/A,N/A,N/A,N/A,None
+hist_cpi_yoy_growth,PROPERTY,numeric,property_master_v11.csv,Direct Mapping,N/A,N/A,N/A,N/A,N/A,None
+hist_cpi_3m_change,PROPERTY,numeric,property_master_v11.csv,Direct Mapping,N/A,N/A,N/A,N/A,N/A,None
+hist_cpi_12m_change,PROPERTY,numeric,property_master_v11.csv,Direct Mapping,N/A,N/A,N/A,N/A,N/A,None
+rera_registered,PROPERTY,numeric,property_master_v11.csv,Direct Mapping,N/A,N/A,N/A,N/A,N/A,None
+project_status,PROPERTY,categorical,property_master_v11.csv,Direct Mapping,N/A,N/A,N/A,N/A,N/A,None
+completion_percent,PROPERTY,numeric,property_master_v11.csv,Direct Mapping,N/A,N/A,N/A,N/A,N/A,None
+construction_duration_months,PROPERTY,numeric,property_master_v11.csv,Direct Mapping,N/A,N/A,N/A,N/A,N/A,None
+project_age,PROPERTY,numeric,property_master_v11.csv,Direct Mapping,N/A,N/A,N/A,N/A,N/A,None
+developer_project_count,PROPERTY,numeric,property_master_v11.csv,Direct Mapping,N/A,N/A,N/A,N/A,N/A,None
+developer_completion_rate,PROPERTY,numeric,property_master_v11.csv,Direct Mapping,N/A,N/A,N/A,N/A,N/A,None
+developer_lapsed_project_count,PROPERTY,numeric,property_master_v11.csv,Direct Mapping,N/A,N/A,N/A,N/A,N/A,None
+aqi,PROPERTY,numeric,property_master_v11.csv,Direct Mapping,N/A,N/A,N/A,N/A,N/A,None
+pm25,PROPERTY,numeric,property_master_v11.csv,Direct Mapping,N/A,N/A,N/A,N/A,N/A,None
+pm10,PROPERTY,numeric,property_master_v11.csv,Direct Mapping,N/A,N/A,N/A,N/A,N/A,None
+aqi_30d_avg,PROPERTY,numeric,property_master_v11.csv,Direct Mapping,N/A,N/A,N/A,N/A,N/A,None
+aqi_90d_avg,PROPERTY,numeric,property_master_v11.csv,Direct Mapping,N/A,N/A,N/A,N/A,N/A,None
+derived_area_per_bhk,PROPERTY,numeric,property_master_v11.csv,Direct Mapping,N/A,N/A,N/A,N/A,N/A,None
+derived_bathrooms_per_bhk,PROPERTY,numeric,property_master_v11.csv,Direct Mapping,N/A,N/A,N/A,N/A,N/A,None
+derived_carpet_efficiency,PROPERTY,numeric,property_master_v11.csv,Direct Mapping,N/A,N/A,N/A,N/A,N/A,None
+derived_floor_ratio,PROPERTY,numeric,property_master_v11.csv,Direct Mapping,N/A,N/A,N/A,N/A,N/A,None
+derived_area_per_bhk_log1p,PROPERTY,numeric,property_master_v11.csv,Direct Mapping,N/A,N/A,N/A,N/A,N/A,None
+derived_carpet_efficiency_log1p,PROPERTY,numeric,property_master_v11.csv,Direct Mapping,N/A,N/A,N/A,N/A,N/A,None
+derived_rent_per_sqft_log1p,PROPERTY,numeric,property_master_v11.csv,Direct Mapping,N/A,N/A,N/A,N/A,N/A,None
+historical_locality_median_ppsf,RENTAL,numeric,Calculated from train fold,Median(price_per_sqft of past Train listings),All history prior to listing_date,Median,YES,YES,YES,None (Safe leave-one-out historical median)
+historical_rental_yield_pct,RENTAL,numeric,Derived,annual_rent_estimate_inr / (historical_locality_median_ppsf * builtup_area_sqft) * 100,N/A,N/A,YES,YES,YES,None (Safe yield calculated on price proxy)
+derived_historical_rental_yield_log1p,RENTAL,numeric,Derived,log1p(historical_rental_yield_pct),N/A,N/A,YES,YES,YES,None

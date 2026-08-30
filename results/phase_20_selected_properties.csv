@@ -1,0 +1,6 @@
+property_master_id,city,locality,property_type,bhk,builtup_area_sqft,price_inr,predicted_price
+PROP-1F790EFD8125,Pune,Ambegaon,Apartment,1,595,1900000,1.8478782e+06
+PROP-731A2F56E657,Delhi,Sultanpur,Apartment,1,585,3500000,3.6510725e+06
+PROP-B0FC8841569E,Chennai,Mogappair,Independent House,1,900,6000000,6.2692765e+06
+PROP-B8888E831EFC,Bengaluru,Krishnarajapura,Apartment,3,1650,13500000,1.1126201e+07
+PROP-B2BD4E3603E1,Bengaluru,Doddabommasandra,Independent House,6,4150,14000000,2.73807e+07

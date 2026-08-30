@@ -1,0 +1,26 @@
+property_master_id,city,property_type,feature_changed,scenario,original_value,counterfactual_value,baseline_prediction,counterfactual_prediction,delta_price,delta_percent,validity
+PROP-1F790EFD8125,Pune,Apartment,repo_rate,P10 (4.00),5.9,4.0,1847878.25,1.8449484e+06,-2930.0,-0.16,VALID
+PROP-1F790EFD8125,Pune,Apartment,repo_rate,P25 (4.00),5.9,4.0,1847878.25,1.8449484e+06,-2930.0,-0.16,VALID
+PROP-1F790EFD8125,Pune,Apartment,repo_rate,P50 (4.90),5.9,4.9,1847878.25,1.8431615e+06,-4716.88,-0.26,VALID
+PROP-1F790EFD8125,Pune,Apartment,repo_rate,P75 (5.90),5.9,5.9,1847878.25,1.8478782e+06,0.0,0.0,VALID
+PROP-1F790EFD8125,Pune,Apartment,repo_rate,P90 (5.90),5.9,5.9,1847878.25,1.8478782e+06,0.0,0.0,VALID
+PROP-731A2F56E657,Delhi,Apartment,repo_rate,P10 (4.00),4.0,4.0,3651072.5,3.6510728e+06,0.0,0.0,VALID
+PROP-731A2F56E657,Delhi,Apartment,repo_rate,P25 (4.00),4.0,4.0,3651072.5,3.6510728e+06,0.0,0.0,VALID
+PROP-731A2F56E657,Delhi,Apartment,repo_rate,P50 (4.90),4.0,4.9,3651072.5,3.6697975e+06,18725.0,0.51,VALID
+PROP-731A2F56E657,Delhi,Apartment,repo_rate,P75 (5.90),4.0,5.9,3651072.5,3.6751735e+06,24101.0,0.66,VALID
+PROP-731A2F56E657,Delhi,Apartment,repo_rate,P90 (5.90),4.0,5.9,3651072.5,3.6751735e+06,24101.0,0.66,VALID
+PROP-B0FC8841569E,Chennai,Independent House,repo_rate,P10 (4.00),4.9,4.0,6269276.5,6.275354e+06,6077.5,0.1,VALID
+PROP-B0FC8841569E,Chennai,Independent House,repo_rate,P25 (4.00),4.9,4.0,6269276.5,6.275354e+06,6077.5,0.1,VALID
+PROP-B0FC8841569E,Chennai,Independent House,repo_rate,P50 (4.90),4.9,4.9,6269276.5,6.269277e+06,0.0,0.0,VALID
+PROP-B0FC8841569E,Chennai,Independent House,repo_rate,P75 (5.90),4.9,5.9,6269276.5,6.2627215e+06,-6555.5,-0.1,VALID
+PROP-B0FC8841569E,Chennai,Independent House,repo_rate,P90 (5.90),4.9,5.9,6269276.5,6.2627215e+06,-6555.5,-0.1,VALID
+PROP-B8888E831EFC,Bengaluru,Apartment,repo_rate,P10 (4.00),5.9,4.0,11126201.0,1.1144806e+07,18606.0,0.17,VALID
+PROP-B8888E831EFC,Bengaluru,Apartment,repo_rate,P25 (4.00),5.9,4.0,11126201.0,1.1144806e+07,18606.0,0.17,VALID
+PROP-B8888E831EFC,Bengaluru,Apartment,repo_rate,P50 (4.90),5.9,4.9,11126201.0,1.1109915e+07,-16286.0,-0.15,VALID
+PROP-B8888E831EFC,Bengaluru,Apartment,repo_rate,P75 (5.90),5.9,5.9,11126201.0,1.1126202e+07,0.0,0.0,VALID
+PROP-B8888E831EFC,Bengaluru,Apartment,repo_rate,P90 (5.90),5.9,5.9,11126201.0,1.1126202e+07,0.0,0.0,VALID
+PROP-B2BD4E3603E1,Bengaluru,Independent House,repo_rate,P10 (4.00),5.9,4.0,27380700.0,2.7047824e+07,-332876.0,-1.22,VALID
+PROP-B2BD4E3603E1,Bengaluru,Independent House,repo_rate,P25 (4.00),5.9,4.0,27380700.0,2.7047824e+07,-332876.0,-1.22,VALID
+PROP-B2BD4E3603E1,Bengaluru,Independent House,repo_rate,P50 (4.90),5.9,4.9,27380700.0,2.7310812e+07,-69888.0,-0.26,VALID
+PROP-B2BD4E3603E1,Bengaluru,Independent House,repo_rate,P75 (5.90),5.9,5.9,27380700.0,2.73807e+07,0.0,0.0,VALID
+PROP-B2BD4E3603E1,Bengaluru,Independent House,repo_rate,P90 (5.90),5.9,5.9,27380700.0,2.73807e+07,0.0,0.0,VALID

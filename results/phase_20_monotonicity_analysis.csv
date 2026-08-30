@@ -1,0 +1,3 @@
+feature,total_scenarios_tested,non_monotonic_count,monotonicity_percent,interpretation
+builtup_area_sqft,25,9,64.0,Plausible positive monotonicity
+bhk,25,8,68.0,High positive monotonicity

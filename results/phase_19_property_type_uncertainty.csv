@@ -1,0 +1,4 @@
+property_type,sample_count,empirical_coverage,mean_interval_width,median_interval_width,interval_score
+Apartment,1377,92.16,10370656.94,10958009.16,20531653.75
+Independent House,631,69.1,11167871.91,11752775.32,111016479.76
+Villa,96,69.79,11411464.68,11752775.32,121955810.28

@@ -1,0 +1,26 @@
+property_master_id,city,property_type,feature_changed,scenario,original_value,counterfactual_value,baseline_prediction,counterfactual_prediction,delta_price,delta_percent,validity
+PROP-1F790EFD8125,Pune,Apartment,project_age,0 Years Age,,0.0,1847878.25,1.8546896e+06,6811.38,0.37,VALID
+PROP-1F790EFD8125,Pune,Apartment,project_age,0 Years Age,,0.0,1847878.25,1.8546896e+06,6811.38,0.37,VALID
+PROP-1F790EFD8125,Pune,Apartment,project_age,0 Years Age,,0.0,1847878.25,1.8546896e+06,6811.38,0.37,VALID
+PROP-1F790EFD8125,Pune,Apartment,project_age,0 Years Age,,0.0,1847878.25,1.8546896e+06,6811.38,0.37,VALID
+PROP-1F790EFD8125,Pune,Apartment,project_age,0 Years Age,,0.0,1847878.25,1.8546896e+06,6811.38,0.37,VALID
+PROP-731A2F56E657,Delhi,Apartment,project_age,0 Years Age,,0.0,3651072.5,3.6557762e+06,4703.75,0.13,VALID
+PROP-731A2F56E657,Delhi,Apartment,project_age,0 Years Age,,0.0,3651072.5,3.6557762e+06,4703.75,0.13,VALID
+PROP-731A2F56E657,Delhi,Apartment,project_age,0 Years Age,,0.0,3651072.5,3.6557762e+06,4703.75,0.13,VALID
+PROP-731A2F56E657,Delhi,Apartment,project_age,0 Years Age,,0.0,3651072.5,3.6557762e+06,4703.75,0.13,VALID
+PROP-731A2F56E657,Delhi,Apartment,project_age,0 Years Age,,0.0,3651072.5,3.6557762e+06,4703.75,0.13,VALID
+PROP-B0FC8841569E,Chennai,Independent House,project_age,0 Years Age,,0.0,6269276.5,6.189168e+06,-80108.5,-1.28,VALID
+PROP-B0FC8841569E,Chennai,Independent House,project_age,0 Years Age,,0.0,6269276.5,6.189168e+06,-80108.5,-1.28,VALID
+PROP-B0FC8841569E,Chennai,Independent House,project_age,0 Years Age,,0.0,6269276.5,6.189168e+06,-80108.5,-1.28,VALID
+PROP-B0FC8841569E,Chennai,Independent House,project_age,0 Years Age,,0.0,6269276.5,6.189168e+06,-80108.5,-1.28,VALID
+PROP-B0FC8841569E,Chennai,Independent House,project_age,0 Years Age,,0.0,6269276.5,6.189168e+06,-80108.5,-1.28,VALID
+PROP-B8888E831EFC,Bengaluru,Apartment,project_age,15.0 Years Age,20.0,15.0,11126201.0,1.1126202e+07,0.0,0.0,VALID
+PROP-B8888E831EFC,Bengaluru,Apartment,project_age,20.0 Years Age,20.0,20.0,11126201.0,1.1126202e+07,0.0,0.0,VALID
+PROP-B8888E831EFC,Bengaluru,Apartment,project_age,25.0 Years Age,20.0,25.0,11126201.0,1.1126202e+07,0.0,0.0,VALID
+PROP-B8888E831EFC,Bengaluru,Apartment,project_age,30.0 Years Age,20.0,30.0,11126201.0,1.1126202e+07,0.0,0.0,VALID
+PROP-B8888E831EFC,Bengaluru,Apartment,project_age,40.0 Years Age,20.0,40.0,11126201.0,1.1177635e+07,51433.0,0.46,VALID
+PROP-B2BD4E3603E1,Bengaluru,Independent House,project_age,0 Years Age,,0.0,27380700.0,2.7496048e+07,115348.0,0.42,VALID
+PROP-B2BD4E3603E1,Bengaluru,Independent House,project_age,0 Years Age,,0.0,27380700.0,2.7496048e+07,115348.0,0.42,VALID
+PROP-B2BD4E3603E1,Bengaluru,Independent House,project_age,0 Years Age,,0.0,27380700.0,2.7496048e+07,115348.0,0.42,VALID
+PROP-B2BD4E3603E1,Bengaluru,Independent House,project_age,0 Years Age,,0.0,27380700.0,2.7496048e+07,115348.0,0.42,VALID
+PROP-B2BD4E3603E1,Bengaluru,Independent House,project_age,0 Years Age,,0.0,27380700.0,2.7496048e+07,115348.0,0.42,VALID

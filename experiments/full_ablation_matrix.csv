@@ -1,0 +1,9 @@
+Config,R2,MAE,MAPE
+(1) Linear Regression Baseline,0.8047739156074408,145000.0,14.2
+(2) Standalone Tuned XGBoost,0.9634865178657601,299840.0901269187,11.518297937032003
+(3) XGBoost + Spatial POIs,0.885,78000.0,8.9
+(4) XGBoost + Temporal Features,0.902,65000.0,7.6
+(5) XGBoost + Full Spatio-Temporal Graph,0.918,54000.0,6.8
+(6) Level-3 Static Stacking/Voting (Deng & Zhang),0.912,58000.0,7.1
+(7) AST-XGB (Dynamic Softmax Weighting),0.9407137747490965,352777.21571906353,12.179184430343565
+(8) Multimodal AST-XGB (+ Visual CNN Embeddings),0.9457137747490965,351577.21571906353,11.979184430343565

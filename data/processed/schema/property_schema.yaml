@@ -1,0 +1,277 @@
+schema_name: AST-XGB India Property Master Schema v1
+author: Apoorv Mishra
+version: 1.0.0
+created_at: '2026-08-30T18:38:07'
+source_dataset: 'Kaggle: rakkesharv/real-estate-data-from-7-indian-cities'
+row_count: 14021
+primary_key: property_master_id
+target_variable: price_inr
+id_generation: SHA-256 hash of (city|locality|property_type|bhk|baths|area_sqft|price_inr|row_index),
+  prefix PROP-
+cities:
+- Bengaluru
+- Mumbai
+- Delhi
+- Chennai
+- Pune
+- Kolkata
+- Hyderabad
+fields:
+  property_master_id:
+    type: string
+    nullable: false
+    is_primary_key: true
+    description: 'Stable unique identifier. SHA-256 hash of key property attributes
+      + row index. Format: PROP-{12-char hex}.'
+    source: generated
+  city:
+    type: string
+    nullable: false
+    allowed_values:
+    - Bengaluru
+    - Mumbai
+    - Delhi
+    - Chennai
+    - Pune
+    - Kolkata
+    - Hyderabad
+    description: Canonical metropolitan city. Standardised from raw Location string.
+    source: parsed from raw__location / property_title
+  locality:
+    type: string
+    nullable: true
+    description: Sub-locality / neighbourhood within city. title() case, punctuation
+      stripped.
+    source: parsed from raw__location / property_title
+  latitude:
+    type: float
+    nullable: true
+    unit: degrees
+    description: Geographic latitude (WGS-84). NOT in source — requires geocoding
+      in Phase 4.
+    source: null — pending geocoding
+  longitude:
+    type: float
+    nullable: true
+    unit: degrees
+    description: Geographic longitude (WGS-84). NOT in source — requires geocoding
+      in Phase 4.
+    source: null — pending geocoding
+  property_type:
+    type: string
+    nullable: false
+    allowed_values:
+    - Apartment
+    - Independent House
+    - Villa
+    - Plot
+    - Studio
+    - Penthouse
+    - Builder Floor
+    - Row House
+    - Farm House
+    description: Canonical property classification. Extracted via keyword regex from
+      property_title.
+    source: regex on raw__property_title
+  bhk:
+    type: integer
+    nullable: true
+    unit: rooms
+    valid_range:
+    - 1
+    - 15
+    description: Bedroom-Hall-Kitchen count. Extracted from property_title prefix
+      (e.g. "3 BHK Flat").
+    source: regex on raw__property_title
+  bathrooms:
+    type: integer
+    nullable: false
+    unit: count
+    valid_range:
+    - 1
+    - 15
+    description: Number of bathrooms. Directly from source Baths column.
+    source: 'source column: Baths'
+  balconies:
+    type: integer
+    nullable: false
+    allowed_values:
+    - 0
+    - 1
+    description: 'Binary flag: 1 = has balcony, 0 = no balcony. Derived from source
+      Balcony (Yes/No).'
+    source: 'source column: Balcony'
+  parking:
+    type: integer
+    nullable: true
+    unit: spaces
+    valid_range:
+    - 0
+    - 10
+    description: Number of parking spaces. Extracted from description_clean via regex.
+    source: regex on raw__description
+  carpet_area_sqft:
+    type: float
+    nullable: true
+    unit: sqft
+    valid_range:
+    - 50
+    - 30000
+    description: Carpet area (liveable floor area). Extracted from description when
+      mentioned explicitly.
+    source: regex on raw__description
+  builtup_area_sqft:
+    type: float
+    nullable: false
+    unit: sqft
+    valid_range:
+    - 50
+    - 50000
+    description: Built-up area (carpet + walls + balcony). Primary area field from
+      source Total_Area.
+    source: 'source column: Total_Area'
+  super_builtup_area_sqft:
+    type: float
+    nullable: true
+    unit: sqft
+    valid_range:
+    - 50
+    - 50000
+    description: Super built-up area (builtup + common areas). Extracted from description
+      when mentioned.
+    source: regex on raw__description
+  plot_area_sqft:
+    type: float
+    nullable: true
+    unit: sqft
+    valid_range:
+    - 50
+    - 100000
+    description: Plot/land area. Applicable for Villas, Independent Houses, Plots.
+      Extracted from description.
+    source: regex on raw__description
+  floor_no:
+    type: integer
+    nullable: true
+    unit: floor level
+    valid_range:
+    - 0
+    - 100
+    description: Floor number on which unit is located (0 = ground floor). Extracted
+      from description.
+    source: regex on raw__description
+  total_floors:
+    type: integer
+    nullable: true
+    unit: count
+    valid_range:
+    - 1
+    - 150
+    description: Total number of floors in the building. Extracted from description.
+    source: regex on raw__description
+  year_built:
+    type: integer
+    nullable: true
+    unit: year
+    valid_range:
+    - 1950
+    - 2026
+    description: Year property was built/completed. Extracted from description.
+    source: regex on raw__description
+  age_years:
+    type: integer
+    nullable: true
+    unit: years
+    description: Computed as current_year - year_built. NULL if year_built unavailable.
+    source: derived from year_built
+  furnishing:
+    type: string
+    nullable: true
+    allowed_values:
+    - Fully-Furnished
+    - Semi-Furnished
+    - Unfurnished
+    description: Furnishing status of the property. Extracted from description text.
+    source: regex on raw__description
+  facing:
+    type: string
+    nullable: true
+    allowed_values:
+    - North
+    - South
+    - East
+    - West
+    - North-East
+    - North-West
+    - South-East
+    - South-West
+    description: Property facing direction. Extracted from description when mentioned.
+    source: regex on raw__description
+  rera_registered:
+    type: integer
+    nullable: false
+    allowed_values:
+    - 0
+    - 1
+    description: 1 = RERA registration mentioned in description, 0 = not mentioned
+      (does NOT confirm non-registration).
+    source: regex on raw__description
+  rera_id:
+    type: string
+    nullable: true
+    description: 'RERA registration ID extracted from description. Pattern: alphanumeric
+      5–30 chars after "RERA".'
+    source: regex on raw__description
+  listing_date:
+    type: date
+    nullable: true
+    description: Date when property was listed. NOT available in source dataset —
+      reserved for future data enrichment.
+    source: null — not in source
+  price_inr:
+    type: integer
+    nullable: false
+    unit: INR
+    description: 'PRIMARY REGRESSION TARGET. Sale price in Indian Rupees. Derived:
+      price_lakhs × 100,000.'
+    source: 'derived from source column: Price'
+  price_lakhs:
+    type: float
+    nullable: false
+    unit: INR Lakhs
+    description: Sale price in Lakhs (1 Lakh = 100,000 INR). Human-readable target.
+    source: 'derived from source column: Price'
+  price_per_sqft:
+    type: float
+    nullable: false
+    unit: INR/sqft
+    description: 'Derived: price_inr / builtup_area_sqft. Normalised price metric.'
+    source: derived
+  raw__property_name:
+    type: string
+    nullable: true
+    description: Original property/project name from source. Retained for traceability.
+    source: 'source column: Name'
+  raw__property_title:
+    type: string
+    nullable: true
+    description: Original listing title (contains BHK + type + locality + city). Retained
+      for traceability.
+    source: 'source column: Property Title'
+  raw__price:
+    type: string
+    nullable: true
+    description: Original price string (e.g. "₹1.5 Cr"). Retained for audit.
+    source: 'source column: Price'
+  raw__location:
+    type: string
+    nullable: true
+    description: Original location composite string (locality + city). Retained for
+      audit.
+    source: 'source column: Location'
+  raw__description:
+    type: string
+    nullable: true
+    description: Cleaned property description text. Source for all regex extractions
+      above.
+    source: 'derived from source column: Description'

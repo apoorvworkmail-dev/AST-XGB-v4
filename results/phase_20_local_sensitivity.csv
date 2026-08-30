@@ -1,0 +1,6 @@
+property_master_id,city,property_type,area_sensitivity_per_100sqft,bhk_sensitivity_per_1bhk
+PROP-1F790EFD8125,Pune,Apartment,204541.77,85889.38
+PROP-731A2F56E657,Delhi,Apartment,351648.0,440412.0
+PROP-B0FC8841569E,Chennai,Independent House,437191.53,534284.5
+PROP-B8888E831EFC,Bengaluru,Apartment,258160.0,2.397473e+06
+PROP-B2BD4E3603E1,Bengaluru,Independent House,0.0,-119280.0

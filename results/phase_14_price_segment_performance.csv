@@ -1,0 +1,31 @@
+model,price_segment,sample_count,MAE,RMSE,R2,MAPE
+Basic XGBoost,< ₹50 lakh,770,1374602.47,2555812.5,-4.5607,68.97
+Basic XGBoost,> ₹5 crore,65,48359876.78,75412177.8,-0.5948,49.17
+Basic XGBoost,₹1 crore–₹2 crore,405,4287167.76,5927350.69,-3.8315,31.39
+Basic XGBoost,₹2 crore–₹5 crore,186,10814653.92,13388404.07,-2.268,36.88
+Basic XGBoost,₹50 lakh–₹1 crore,678,1876407.07,2934493.39,-3.5652,26.97
+Gradient Boosting,< ₹50 lakh,770,1767649.38,3010782.95,-6.7167,94.65
+Gradient Boosting,> ₹5 crore,65,47873583.99,76049659.52,-0.6219,48.59
+Gradient Boosting,₹1 crore–₹2 crore,405,4597050.58,6468680.85,-4.7543,33.82
+Gradient Boosting,₹2 crore–₹5 crore,186,10828590.33,13738308.17,-2.4411,36.73
+Gradient Boosting,₹50 lakh–₹1 crore,678,1911687.64,2837351.13,-3.2679,27.3
+Linear Regression,< ₹50 lakh,770,2130140.41,3687668.71,-10.5765,101.31
+Linear Regression,> ₹5 crore,65,50932366.11,78401351.4,-0.7237,53.32
+Linear Regression,₹1 crore–₹2 crore,405,5418817.88,8458495.11,-8.839,39.59
+Linear Regression,₹2 crore–₹5 crore,186,11648191.96,17756707.56,-4.7484,40.2
+Linear Regression,₹50 lakh–₹1 crore,678,2609879.94,4745696.49,-10.9396,37.57
+Median Baseline,< ₹50 lakh,770,3475364.94,3640447.87,-10.2819,164.19
+Median Baseline,> ₹5 crore,65,78004615.38,98237850.3,-1.7063,90.4
+Median Baseline,₹1 crore–₹2 crore,405,7236543.21,7722645.87,-7.2016,50.89
+Median Baseline,₹2 crore–₹5 crore,186,22436559.14,23627291.95,-9.1778,76.17
+Median Baseline,₹50 lakh–₹1 crore,678,1156991.15,1446308.39,-0.1089,15.94
+Random Forest,< ₹50 lakh,770,1455571.15,2678878.64,-5.1091,73.81
+Random Forest,> ₹5 crore,65,50230568.17,76311222.08,-0.6331,52.2
+Random Forest,₹1 crore–₹2 crore,405,4611055.34,6126655.07,-4.1619,33.86
+Random Forest,₹2 crore–₹5 crore,186,10644819.99,13160629.62,-2.1578,36.3
+Random Forest,₹50 lakh–₹1 crore,678,1820243.05,2552953.79,-2.4552,25.95
+Ridge,< ₹50 lakh,770,2066261.94,3611939.16,-10.1059,98.63
+Ridge,> ₹5 crore,65,51125989.17,78556884.12,-0.7306,53.52
+Ridge,₹1 crore–₹2 crore,405,5333785.33,8283188.06,-8.4354,38.94
+Ridge,₹2 crore–₹5 crore,186,11629202.96,17565467.82,-4.6253,40.1
+Ridge,₹50 lakh–₹1 crore,678,2538585.99,4631197.01,-10.3704,36.51

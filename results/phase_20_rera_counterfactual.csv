@@ -1,0 +1,26 @@
+property_master_id,city,property_type,feature_changed,scenario,original_value,counterfactual_value,baseline_prediction,counterfactual_prediction,delta_price,delta_percent,validity
+PROP-1F790EFD8125,Pune,Apartment,completion_percent,P10 (25.72),,25.72000000000001,1847878.25,1.9166961e+06,68817.88,3.72,VALID
+PROP-1F790EFD8125,Pune,Apartment,completion_percent,P25 (41.85),,41.849999999999994,1847878.25,1.8784394e+06,30561.12,1.65,VALID
+PROP-1F790EFD8125,Pune,Apartment,completion_percent,P50 (69.20),,69.2,1847878.25,1.8443589e+06,-3519.38,-0.19,VALID
+PROP-1F790EFD8125,Pune,Apartment,completion_percent,P75 (100.00),,100.0,1847878.25,1.8443589e+06,-3519.38,-0.19,VALID
+PROP-1F790EFD8125,Pune,Apartment,completion_percent,P90 (100.00),,100.0,1847878.25,1.8443589e+06,-3519.38,-0.19,VALID
+PROP-731A2F56E657,Delhi,Apartment,completion_percent,P10 (25.72),,25.72000000000001,3651072.5,3.7396198e+06,88547.25,2.43,VALID
+PROP-731A2F56E657,Delhi,Apartment,completion_percent,P25 (41.85),,41.849999999999994,3651072.5,3.728221e+06,77148.75,2.11,VALID
+PROP-731A2F56E657,Delhi,Apartment,completion_percent,P50 (69.20),,69.2,3651072.5,3.6441188e+06,-6953.75,-0.19,VALID
+PROP-731A2F56E657,Delhi,Apartment,completion_percent,P75 (100.00),,100.0,3651072.5,3.622632e+06,-28440.5,-0.78,VALID
+PROP-731A2F56E657,Delhi,Apartment,completion_percent,P90 (100.00),,100.0,3651072.5,3.622632e+06,-28440.5,-0.78,VALID
+PROP-B0FC8841569E,Chennai,Independent House,completion_percent,P10 (25.72),,25.72000000000001,6269276.5,6.1695795e+06,-99697.0,-1.59,VALID
+PROP-B0FC8841569E,Chennai,Independent House,completion_percent,P25 (41.85),,41.849999999999994,6269276.5,6.2322515e+06,-37025.0,-0.59,VALID
+PROP-B0FC8841569E,Chennai,Independent House,completion_percent,P50 (69.20),,69.2,6269276.5,6.2573365e+06,-11940.5,-0.19,VALID
+PROP-B0FC8841569E,Chennai,Independent House,completion_percent,P75 (100.00),,100.0,6269276.5,6.2573365e+06,-11940.5,-0.19,VALID
+PROP-B0FC8841569E,Chennai,Independent House,completion_percent,P90 (100.00),,100.0,6269276.5,6.2573365e+06,-11940.5,-0.19,VALID
+PROP-B8888E831EFC,Bengaluru,Apartment,completion_percent,P10 (25.72),71.4,25.72000000000001,11126201.0,1.127607e+07,149870.0,1.35,VALID
+PROP-B8888E831EFC,Bengaluru,Apartment,completion_percent,P25 (41.85),71.4,41.849999999999994,11126201.0,1.1152378e+07,26176.0,0.24,VALID
+PROP-B8888E831EFC,Bengaluru,Apartment,completion_percent,P50 (69.20),71.4,69.2,11126201.0,1.1126202e+07,0.0,0.0,VALID
+PROP-B8888E831EFC,Bengaluru,Apartment,completion_percent,P75 (100.00),71.4,100.0,11126201.0,1.1103156e+07,-23044.0,-0.21,VALID
+PROP-B8888E831EFC,Bengaluru,Apartment,completion_percent,P90 (100.00),71.4,100.0,11126201.0,1.1103156e+07,-23044.0,-0.21,VALID
+PROP-B2BD4E3603E1,Bengaluru,Independent House,completion_percent,P10 (25.72),,25.72000000000001,27380700.0,2.7929314e+07,548612.0,2.0,VALID
+PROP-B2BD4E3603E1,Bengaluru,Independent House,completion_percent,P25 (41.85),,41.849999999999994,27380700.0,2.7402908e+07,22208.0,0.08,VALID
+PROP-B2BD4E3603E1,Bengaluru,Independent House,completion_percent,P50 (69.20),,69.2,27380700.0,2.7328582e+07,-52120.0,-0.19,VALID
+PROP-B2BD4E3603E1,Bengaluru,Independent House,completion_percent,P75 (100.00),,100.0,27380700.0,2.7504596e+07,123896.0,0.45,VALID
+PROP-B2BD4E3603E1,Bengaluru,Independent House,completion_percent,P90 (100.00),,100.0,27380700.0,2.7504596e+07,123896.0,0.45,VALID

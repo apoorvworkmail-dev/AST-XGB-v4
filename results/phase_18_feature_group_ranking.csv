@@ -1,0 +1,10 @@
+rank,feature_group,full_model_test_MAE,ablation_test_MAE,MAE_change,MAE_change_percent,RMSE_change,R2_change,importance_interpretation
+1,PROPERTY,4265419.5,4590100.0,324680.5,7.61,694159.43,-0.059,"Removing PROPERTY increases MAE by ₹324,680.50 (+7.61%), indicating positive predictive contribution."
+2,RENTAL,4265419.5,4369964.5,104545.0,2.45,516376.62,-0.0436,"Removing RENTAL increases MAE by ₹104,545.00 (+2.45%), indicating positive predictive contribution."
+3,DERIVED,4265419.5,4271824.5,6405.0,0.15,152361.87,-0.0127,"Removing DERIVED increases MAE by ₹6,405.00 (+0.15%), indicating positive predictive contribution."
+4,MOSPI,4265419.5,4261913.5,-3506.0,-0.08,159804.02,-0.0133,"Removing MOSPI increases MAE by ₹-3,506.00 (-0.08%), indicating positive predictive contribution."
+5,RERA,4265419.5,4257858.0,-7561.5,-0.18,97253.13,-0.0081,"Removing RERA increases MAE by ₹-7,561.50 (-0.18%), indicating positive predictive contribution."
+6,SPATIAL,4265419.5,4228310.0,-37109.5,-0.87,199438.22,-0.0167,"Removing SPATIAL increases MAE by ₹-37,109.50 (-0.87%), indicating positive predictive contribution."
+7,CPCB,4265419.5,4226591.0,-38828.5,-0.91,39728.32,-0.0033,"Removing CPCB increases MAE by ₹-38,828.50 (-0.91%), indicating positive predictive contribution."
+8,RBI,4265419.5,4225632.0,-39787.5,-0.93,58308.12,-0.0048,"Removing RBI increases MAE by ₹-39,787.50 (-0.93%), indicating positive predictive contribution."
+9,MARKET,4265419.5,4177485.0,-87934.5,-2.06,44790.51,-0.0037,"Removing MARKET increases MAE by ₹-87,934.50 (-2.06%), indicating positive predictive contribution."

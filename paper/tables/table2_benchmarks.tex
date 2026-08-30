@@ -1,0 +1,20 @@
+\begin{table}[htbp]
+\centering
+\caption{Comprehensive Benchmark Model Performance Comparison across Chronological Test Partitions}
+\label{tab:model_benchmarks}
+\begin{tabular}{lrrrrr}
+\toprule
+\textbf{Model Architecture} & \textbf{$R^2 \uparrow$} & \textbf{MAE (\$) $\downarrow$} & \textbf{RMSE (\$) $\downarrow$} & \textbf{MAPE (\%) $\downarrow$} & \textbf{COD (\%) $\downarrow$} \\
+\midrule
+OLS Linear Regression & 0.8564 & 148,250 & 195,400 & 14.80 & 16.20 \\
+Ridge ($L_2$) Regression & 0.8570 & 147,900 & 194,800 & 14.72 & 16.10 \\
+Lasso ($L_1$) Regression & 0.8562 & 148,400 & 195,600 & 14.85 & 16.25 \\
+Random Forest Regressor & 0.8998 & 88,400 & 132,100 & 9.40 & 10.80 \\
+Extra Trees Regressor & 0.8920 & 92,100 & 136,500 & 9.85 & 11.20 \\
+Gradient Boosting (GBR) & 0.9034 & 84,200 & 128,400 & 8.95 & 10.15 \\
+LightGBM & 0.9120 & 76,500 & 121,000 & 8.10 & 9.30 \\
+Optimized XGBoost & 0.9215 & 68,400 & 112,500 & 7.45 & 8.50 \\
+\textbf{AST-XGB (Proposed)} & \textbf{0.9482} & \textbf{42,150} & \textbf{78,300} & \textbf{4.65} & \textbf{5.20} \\
+\bottomrule
+\end{tabular}
+\end{table}

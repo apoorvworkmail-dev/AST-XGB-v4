@@ -1,0 +1,15 @@
+{
+  "python_version": "3.11.5 (tags/v3.11.5:cce6ba9, Aug 24 2023, 14:38:34) [MSC v.1936 64 bit (AMD64)]",
+  "model_version": "Phase 15 XGBoost v4",
+  "feature_version": "v4",
+  "random_seed": 42,
+  "calibration_rows": 2103,
+  "test_rows": 2104,
+  "conformal_method": "Split Conformal Prediction (Inductive)",
+  "quantile_calculation": "ceil((n+1)(1-alpha))/n",
+  "coverage_levels": [
+    "80%",
+    "90%",
+    "95%"
+  ]
+}

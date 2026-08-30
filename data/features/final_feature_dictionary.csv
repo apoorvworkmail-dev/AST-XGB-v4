@@ -1,0 +1,66 @@
+feature_name,feature_group,data_type,source,formula,missing_percentage,unique_count,leakage_risk,status
+property_master_id,METADATA,string,PROP-SHA256,hash(Name+Loc+City),0.0,14021,None,KEEP
+price_inr,TARGET,numeric,primary_property.csv,Price in INR,0.0,882,Target column,KEEP
+city,PROPERTY,categorical,property_master_v11.csv,Direct Mapping,0.0,7,None,KEEP
+locality,PROPERTY,categorical,property_master_v11.csv,Direct Mapping,0.0,1790,None,KEEP
+property_type,PROPERTY,categorical,property_master_v11.csv,Direct Mapping,0.0,3,None,KEEP
+bhk,PROPERTY,numeric,property_master_v11.csv,Direct Mapping,0.0,10,None,KEEP
+bathrooms,PROPERTY,numeric,property_master_v11.csv,Direct Mapping,0.0,6,None,KEEP
+balconies,PROPERTY,numeric,property_master_v11.csv,Direct Mapping,0.0,2,None,KEEP
+builtup_area_sqft,PROPERTY,numeric,property_master_v11.csv,Direct Mapping,0.0,1774,None,KEEP
+floor_no,PROPERTY,numeric,property_master_v11.csv,Direct Mapping,35.98,38,None,KEEP
+total_floors,PROPERTY,numeric,property_master_v11.csv,Direct Mapping,49.19,50,None,KEEP
+parking,PROPERTY,numeric,property_master_v11.csv,Direct Mapping,97.62,6,None,KEEP
+furnishing,PROPERTY,categorical,property_master_v11.csv,Direct Mapping,98.91,3,None,KEEP
+facing,PROPERTY,categorical,property_master_v11.csv,Direct Mapping,89.72,8,None,KEEP
+latitude,SPATIAL,numeric,Phase 10 OSM integration,Direct Mapping,0.0,1799,None,KEEP
+longitude,SPATIAL,numeric,Phase 10 OSM integration,Direct Mapping,0.0,1799,None,KEEP
+schools_distance_km,SPATIAL,numeric,Phase 10 OSM integration,Direct Mapping,0.0,1643,None,KEEP
+hospitals_distance_km,SPATIAL,numeric,Phase 10 OSM integration,Direct Mapping,0.0,1635,None,KEEP
+metro_stations_distance_km,SPATIAL,numeric,Phase 10 OSM integration,Direct Mapping,0.0,1668,None,KEEP
+railway_stations_distance_km,SPATIAL,numeric,Phase 10 OSM integration,Direct Mapping,0.0,1731,None,KEEP
+malls_distance_km,SPATIAL,numeric,Phase 10 OSM integration,Direct Mapping,0.0,1694,None,KEEP
+parks_distance_km,SPATIAL,numeric,Phase 10 OSM integration,Direct Mapping,0.0,1659,None,KEEP
+transit_stations_distance_km,SPATIAL,numeric,Phase 10 OSM integration,Direct Mapping,0.0,1626,None,KEEP
+accessibility_score,SPATIAL,numeric,Phase 10 OSM integration,Direct Mapping,0.0,528,None,KEEP
+avg_monthly_rent,RENTAL,numeric,Phase 5 MagicBricks Rental,Direct Mapping,24.5,389,None,KEEP
+median_monthly_rent,RENTAL,numeric,Phase 5 MagicBricks Rental,Direct Mapping,24.5,175,None,KEEP
+median_rent_per_sqft,RENTAL,numeric,Phase 5 MagicBricks Rental,Direct Mapping,24.5,429,None,KEEP
+rental_yield_pct,RENTAL,numeric,Phase 5 MagicBricks Rental,Direct Mapping,24.5,3394,"Low (aggregate rents, not specific property target)",KEEP
+rental_listing_count,RENTAL,numeric,Phase 5 MagicBricks Rental,Direct Mapping,24.5,50,None,KEEP
+hist_hpi_market,MARKET,numeric,Phase 6 NHB RESIDEX,Direct Mapping,0.0,131,None,KEEP
+hist_qoq_growth,MARKET,numeric,Phase 6 NHB RESIDEX,Direct Mapping,0.0,103,None,KEEP
+hist_yoy_growth,MARKET,numeric,Phase 6 NHB RESIDEX,Direct Mapping,0.0,100,None,KEEP
+hist_market_regime,MARKET,categorical,Phase 6 NHB RESIDEX,Direct Mapping,0.0,3,None,KEEP
+repo_rate,RBI,numeric,Phase 7 RBI Macro,Direct Mapping,0.0,9,None,KEEP
+bank_rate,RBI,numeric,Phase 7 RBI Macro,Direct Mapping,0.0,9,None,KEEP
+CRR,RBI,numeric,Phase 7 RBI Macro,Direct Mapping,0.0,4,None,KEEP
+SLR,RBI,numeric,Phase 7 RBI Macro,Direct Mapping,0.0,6,None,KEEP
+repo_rate_change,RBI,numeric,Phase 7 RBI Macro,Direct Mapping,0.0,2,None,KEEP
+repo_rate_3m_change,RBI,numeric,Phase 7 RBI Macro,Direct Mapping,0.0,9,None,KEEP
+repo_rate_12m_change,RBI,numeric,Phase 7 RBI Macro,Direct Mapping,0.0,11,None,KEEP
+hist_cpi_index,MOSPI,numeric,Phase 8 MoSPI CPI,Direct Mapping,0.0,19,None,KEEP
+hist_cpi_yoy_growth,MOSPI,numeric,Phase 8 MoSPI CPI,Direct Mapping,0.0,17,None,KEEP
+hist_cpi_3m_change,MOSPI,numeric,Phase 8 MoSPI CPI,Direct Mapping,0.0,18,None,KEEP
+hist_cpi_12m_change,MOSPI,numeric,Phase 8 MoSPI CPI,Direct Mapping,0.0,15,None,KEEP
+rera_registered,RERA,numeric,Phase 9 RERA matching,Direct Mapping,0.0,2,None,KEEP
+project_status,RERA,categorical,Phase 9 RERA matching,Direct Mapping,0.0,3,None,KEEP
+completion_percent,RERA,numeric,Phase 9 RERA matching,Direct Mapping,64.19,666,None,KEEP
+construction_duration_months,RERA,numeric,Phase 9 RERA matching,Direct Mapping,64.19,39,None,KEEP
+project_age,RERA,numeric,Phase 9 RERA matching,Direct Mapping,64.19,81,None,KEEP
+developer_project_count,RERA,numeric,Phase 9 RERA matching,Direct Mapping,0.0,62,None,KEEP
+developer_completion_rate,RERA,numeric,Phase 9 RERA matching,Direct Mapping,0.0,233,None,KEEP
+developer_lapsed_project_count,RERA,numeric,Phase 9 RERA matching,Direct Mapping,0.0,8,None,KEEP
+aqi,CPCB,numeric,Phase 11 CPCB AQI,Direct Mapping,0.0,132,None,KEEP
+pm25,CPCB,numeric,Phase 11 CPCB AQI,Direct Mapping,0.0,96,None,KEEP
+pm10,CPCB,numeric,Phase 11 CPCB AQI,Direct Mapping,0.0,126,None,KEEP
+aqi_30d_avg,CPCB,numeric,Phase 11 CPCB AQI,Direct Mapping,0.0,132,None,KEEP
+aqi_90d_avg,CPCB,numeric,Phase 11 CPCB AQI,Direct Mapping,0.0,187,None,KEEP
+derived_area_per_bhk,DERIVED,numeric,Phase 12 calculations,builtup_area_sqft / bhk,0.0,1996,None,KEEP
+derived_bathrooms_per_bhk,DERIVED,numeric,Phase 12 calculations,bathrooms / bhk,0.0,38,None,KEEP
+derived_carpet_efficiency,DERIVED,numeric,Phase 12 calculations,carpet_area_sqft / builtup_area_sqft,89.36,432,None,KEEP
+derived_floor_ratio,DERIVED,numeric,Phase 12 calculations,floor_no / total_floors,49.6,236,None,KEEP
+derived_area_per_bhk_log1p,DERIVED,numeric,Phase 12 calculations,builtup_area_sqft / bhk -> log1p(val),0.0,1996,None,KEEP
+derived_carpet_efficiency_log1p,DERIVED,numeric,Phase 12 calculations,carpet_area_sqft / builtup_area_sqft -> log1p(val),89.36,432,None,KEEP
+derived_rent_per_sqft_log1p,DERIVED,numeric,Phase 12 calculations,Direct Mapping -> log1p(val),24.5,429,None,KEEP
+derived_rental_yield_log1p,DERIVED,numeric,Phase 12 calculations,Direct Mapping -> log1p(val),24.5,3394,None,KEEP

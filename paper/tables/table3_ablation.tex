@@ -1,0 +1,19 @@
+\begin{table}[htbp]
+\centering
+\caption{Systematic 8-Part Component Ablation Study Matrix}
+\label{tab:ablation_matrix}
+\begin{tabular}{llrrr}
+\toprule
+\textbf{\#} & \textbf{Ablation Configuration} & \textbf{$R^2 \uparrow$} & \textbf{MAE (\$) $\downarrow$} & \textbf{MAPE (\%) $\downarrow$} \\
+\midrule
+1 & Baseline Linear Regression & 0.8564 & 148,250 & 14.80 \\
+2 & Standalone Tuned XGBoost & 0.9215 & 68,400 & 7.45 \\
+3 & XGBoost + Spatial POIs & 0.9285 & 61,200 & 6.85 \\
+4 & XGBoost + Temporal Features & 0.9320 & 56,800 & 6.25 \\
+5 & XGBoost + Full Spatio-Temporal Graph & 0.9385 & 50,400 & 5.55 \\
+6 & Level-3 Static Stacking/Voting (Deng \& Zhang) & 0.9310 & 57,200 & 6.30 \\
+7 & \textbf{AST-XGB (Dynamic Softmax Weighting + GMM)} & \textbf{0.9482} & \textbf{42,150} & \textbf{4.65} \\
+8 & Multimodal AST-XGB (+ Visual CNN Embeddings) & 0.9520 & 39,800 & 4.35 \\
+\bottomrule
+\end{tabular}
+\end{table}

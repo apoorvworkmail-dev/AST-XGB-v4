@@ -1,0 +1,16 @@
+property_master_id,city,property_type,feature_changed,scenario,original_value,counterfactual_value,baseline_prediction,counterfactual_prediction,delta_price,delta_percent,validity
+PROP-1F790EFD8125,Pune,Apartment,bathrooms,1 Bathrooms,2,1,1847878.25,1.8837154e+06,35837.12,1.94,VALID
+PROP-1F790EFD8125,Pune,Apartment,bathrooms,2 Bathrooms,2,2,1847878.25,1.8478782e+06,0.0,0.0,VALID
+PROP-1F790EFD8125,Pune,Apartment,bathrooms,3 Bathrooms,2,3,1847878.25,2.1936965e+06,345818.25,18.71,VALID
+PROP-731A2F56E657,Delhi,Apartment,bathrooms,1 Bathrooms,2,1,3651072.5,3.8511082e+06,200035.77,5.48,VALID
+PROP-731A2F56E657,Delhi,Apartment,bathrooms,2 Bathrooms,2,2,3651072.5,3.6510728e+06,0.0,0.0,VALID
+PROP-731A2F56E657,Delhi,Apartment,bathrooms,3 Bathrooms,2,3,3651072.5,3.4991512e+06,-151921.25,-4.16,VALID
+PROP-B0FC8841569E,Chennai,Independent House,bathrooms,2 Bathrooms,3,2,6269276.5,5.9979065e+06,-271370.0,-4.33,VALID
+PROP-B0FC8841569E,Chennai,Independent House,bathrooms,3 Bathrooms,3,3,6269276.5,6.269277e+06,0.0,0.0,VALID
+PROP-B0FC8841569E,Chennai,Independent House,bathrooms,4 Bathrooms,3,4,6269276.5,4.7760455e+06,-1.493231e+06,-23.82,VALID
+PROP-B8888E831EFC,Bengaluru,Apartment,bathrooms,2 Bathrooms,3,2,11126201.0,1.1320744e+07,194543.0,1.75,VALID
+PROP-B8888E831EFC,Bengaluru,Apartment,bathrooms,3 Bathrooms,3,3,11126201.0,1.1126202e+07,0.0,0.0,VALID
+PROP-B8888E831EFC,Bengaluru,Apartment,bathrooms,4 Bathrooms,3,4,11126201.0,1.1389183e+07,262982.0,2.36,VALID
+PROP-B2BD4E3603E1,Bengaluru,Independent House,bathrooms,4 Bathrooms,5,4,27380700.0,2.7882688e+07,501988.0,1.83,VALID
+PROP-B2BD4E3603E1,Bengaluru,Independent House,bathrooms,5 Bathrooms,5,5,27380700.0,2.73807e+07,0.0,0.0,VALID
+PROP-B2BD4E3603E1,Bengaluru,Independent House,bathrooms,6 Bathrooms,5,6,27380700.0,2.6442792e+07,-937908.0,-3.43,VALID

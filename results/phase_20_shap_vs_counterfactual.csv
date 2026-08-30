@@ -1,0 +1,7 @@
+feature,mean_abs_shap,mean_counterfactual_delta_percent,comparison_note
+builtup_area_sqft,0.35371107,11.7,SHAP measures global variance attribution; Counterfactual measures local prediction response.
+bhk,0.15449987,32.65,SHAP measures global variance attribution; Counterfactual measures local prediction response.
+historical_locality_median_ppsf,0.14500992,0.0,SHAP measures global variance attribution; Counterfactual measures local prediction response.
+median_rent_per_sqft,0.07011026,0.0,SHAP measures global variance attribution; Counterfactual measures local prediction response.
+bathrooms,0.049231857,4.52,SHAP measures global variance attribution; Counterfactual measures local prediction response.
+hist_yoy_growth,0.042883586,0.0,SHAP measures global variance attribution; Counterfactual measures local prediction response.

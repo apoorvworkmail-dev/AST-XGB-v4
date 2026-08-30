@@ -1,0 +1,26 @@
+{
+  "python_version": "3.11.5 (tags/v3.11.5:cce6ba9, Aug 24 2023, 14:38:34) [MSC v.1936 64 bit (AMD64)]",
+  "model_version": "Phase 15 XGBoost v4",
+  "feature_version": "v4",
+  "test_dataset_size": 2104,
+  "selected_property_ids": [
+    "PROP-1F790EFD8125",
+    "PROP-731A2F56E657",
+    "PROP-B0FC8841569E",
+    "PROP-B8888E831EFC",
+    "PROP-B2BD4E3603E1"
+  ],
+  "counterfactual_domains": [
+    "Area",
+    "BHK",
+    "Bathrooms",
+    "Age",
+    "Rental",
+    "Market",
+    "RBI",
+    "CPCB",
+    "RERA",
+    "Multi-Feature"
+  ],
+  "random_seed": 42
+}

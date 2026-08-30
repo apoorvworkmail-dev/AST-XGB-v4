@@ -1,0 +1,4 @@
+coverage_level,nominal_coverage,empirical_coverage,coverage_error,mean_interval_width,median_interval_width,interval_score,lower_violation_rate,upper_violation_rate,test_rows
+80%,80.0,72.29,-7.71,6422988.23,6624906.15,32613408.64,10.5,17.21,2104
+90%,90.0,84.22,-5.78,10657234.97,11752775.32,52296218.51,5.09,10.69,2104
+95%,95.0,90.21,-4.79,15442729.87,15527987.36,82002399.74,2.38,7.41,2104

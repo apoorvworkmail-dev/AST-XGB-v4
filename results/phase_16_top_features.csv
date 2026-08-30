@@ -1,0 +1,21 @@
+rank,feature,feature_group,mean_abs_shap,mean_shap,direction,interpretation
+1,builtup_area_sqft,PROPERTY,0.35371107,0.0117149465,Positive Association,Higher values of builtup_area_sqft generally increase predicted price.
+2,bhk,PROPERTY,0.15449987,0.0025324894,Positive Association,Higher values of bhk generally increase predicted price.
+3,historical_locality_median_ppsf,PROPERTY,0.14500992,0.0064585847,Positive Association,Higher values of historical_locality_median_ppsf generally increase predicted price.
+4,median_rent_per_sqft,RENTAL,0.07011026,-0.009879203,Inverse/Negative Association,Higher values of median_rent_per_sqft generally decrease predicted price.
+5,bathrooms,PROPERTY,0.049231857,0.0010950497,Positive Association,Higher values of bathrooms generally increase predicted price.
+6,hist_yoy_growth,MARKET,0.042883586,-0.041953634,Inverse/Negative Association,Higher values of hist_yoy_growth generally decrease predicted price.
+7,derived_area_per_bhk,PROPERTY,0.036200564,0.0025821414,Positive Association,Higher values of derived_area_per_bhk generally increase predicted price.
+8,rental_listing_count,RENTAL,0.030173605,0.0017576028,Positive Association,Higher values of rental_listing_count generally increase predicted price.
+9,derived_bathrooms_per_bhk,PROPERTY,0.024013828,8.518213e-05,Positive Association,Higher values of derived_bathrooms_per_bhk generally increase predicted price.
+10,total_floors,PROPERTY,0.023034465,0.0004390055,Positive Association,Higher values of total_floors generally increase predicted price.
+11,historical_rental_yield_pct,RENTAL,0.022948556,0.0051638572,Positive Association,Higher values of historical_rental_yield_pct generally increase predicted price.
+12,median_monthly_rent,RENTAL,0.022182047,-0.0021443095,Inverse/Negative Association,Higher values of median_monthly_rent generally decrease predicted price.
+13,longitude,SPATIAL,0.021999387,-0.004128004,Inverse/Negative Association,Higher values of longitude generally decrease predicted price.
+14,derived_floor_ratio,PROPERTY,0.01860753,0.00071656593,Positive Association,Higher values of derived_floor_ratio generally increase predicted price.
+15,railway_stations_distance_km,SPATIAL,0.017788168,-0.0019081472,Inverse/Negative Association,Higher values of railway_stations_distance_km generally decrease predicted price.
+16,property_type_Apartment,PROPERTY,0.017238589,0.0021774578,Positive Association,Higher values of property_type_Apartment generally increase predicted price.
+17,derived_rent_per_sqft_log1p,RENTAL,0.016365247,-0.0015797628,Inverse/Negative Association,Higher values of derived_rent_per_sqft_log1p generally decrease predicted price.
+18,floor_no,PROPERTY,0.015973551,0.000608572,Positive Association,Higher values of floor_no generally increase predicted price.
+19,property_type_Independent House,PROPERTY,0.015750827,0.0042280033,Positive Association,Higher values of property_type_Independent House generally increase predicted price.
+20,malls_distance_km,SPATIAL,0.015028664,-0.00039840606,Inverse/Negative Association,Higher values of malls_distance_km generally decrease predicted price.

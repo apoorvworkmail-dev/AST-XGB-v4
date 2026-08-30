@@ -1,0 +1,6 @@
+property_master_id,city,property_type,bhk,builtup_area_sqft,actual_price,baseline_prediction,reference_90_lower,reference_90_upper,scenario_A_plus10pct_area_pred,scenario_B_plus1bhk_pred
+PROP-1F790EFD8125,Pune,Apartment,1,595,1900000,1847878.25,0.0,7724265.91,2.05242e+06,1.9337676e+06
+PROP-731A2F56E657,Delhi,Apartment,1,585,3500000,3651072.5,0.0,9527460.16,3.855415e+06,4.0914845e+06
+PROP-B0FC8841569E,Chennai,Independent House,1,900,6000000,6269276.5,392888.84,12145664.16,6.706468e+06,6.803561e+06
+PROP-B8888E831EFC,Bengaluru,Apartment,3,1650,13500000,11126201.0,5249813.34,17002588.66,1.1711692e+07,1.3523674e+07
+PROP-B2BD4E3603E1,Bengaluru,Independent House,6,4150,14000000,27380700.0,21504312.34,33257087.66,2.988108e+07,2.726142e+07

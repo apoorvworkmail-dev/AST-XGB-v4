@@ -1,0 +1,26 @@
+property_master_id,city,property_type,feature_changed,scenario,original_value,counterfactual_value,baseline_prediction,counterfactual_prediction,delta_price,delta_percent,validity
+PROP-1F790EFD8125,Pune,Apartment,hist_hpi_market,P10 (133.18),141.75,133.18,1847878.25,1.8353856e+06,-12492.62,-0.68,VALID
+PROP-1F790EFD8125,Pune,Apartment,hist_hpi_market,P25 (133.84),141.75,133.84,1847878.25,1.8319495e+06,-15928.88,-0.86,VALID
+PROP-1F790EFD8125,Pune,Apartment,hist_hpi_market,P50 (136.97),141.75,136.97,1847878.25,1.8478782e+06,0.0,0.0,VALID
+PROP-1F790EFD8125,Pune,Apartment,hist_hpi_market,P75 (139.57),141.75,139.57,1847878.25,1.8478782e+06,0.0,0.0,VALID
+PROP-1F790EFD8125,Pune,Apartment,hist_hpi_market,P90 (141.75),141.75,141.75,1847878.25,1.8478782e+06,0.0,0.0,VALID
+PROP-731A2F56E657,Delhi,Apartment,hist_hpi_market,P10 (133.18),133.18,133.18,3651072.5,3.6510728e+06,0.0,0.0,VALID
+PROP-731A2F56E657,Delhi,Apartment,hist_hpi_market,P25 (133.84),133.18,133.84,3651072.5,3.6512432e+06,170.75,0.0,VALID
+PROP-731A2F56E657,Delhi,Apartment,hist_hpi_market,P50 (136.97),133.18,136.97,3651072.5,3.6512432e+06,170.75,0.0,VALID
+PROP-731A2F56E657,Delhi,Apartment,hist_hpi_market,P75 (139.57),133.18,139.57,3651072.5,3.6512432e+06,170.75,0.0,VALID
+PROP-731A2F56E657,Delhi,Apartment,hist_hpi_market,P90 (141.75),133.18,141.75,3651072.5,3.6512432e+06,170.75,0.0,VALID
+PROP-B0FC8841569E,Chennai,Independent House,hist_hpi_market,P10 (133.18),137.05,133.18,6269276.5,6.2224405e+06,-46836.0,-0.75,VALID
+PROP-B0FC8841569E,Chennai,Independent House,hist_hpi_market,P25 (133.84),137.05,133.84,6269276.5,6.215235e+06,-54041.5,-0.86,VALID
+PROP-B0FC8841569E,Chennai,Independent House,hist_hpi_market,P50 (136.97),137.05,136.97,6269276.5,6.269277e+06,0.0,0.0,VALID
+PROP-B0FC8841569E,Chennai,Independent House,hist_hpi_market,P75 (139.57),137.05,139.57,6269276.5,6.269277e+06,0.0,0.0,VALID
+PROP-B0FC8841569E,Chennai,Independent House,hist_hpi_market,P90 (141.75),137.05,141.75,6269276.5,6.269277e+06,0.0,0.0,VALID
+PROP-B8888E831EFC,Bengaluru,Apartment,hist_hpi_market,P10 (133.18),139.38,133.18,11126201.0,1.0893533e+07,-232667.0,-2.09,VALID
+PROP-B8888E831EFC,Bengaluru,Apartment,hist_hpi_market,P25 (133.84),139.38,133.84,11126201.0,1.1030292e+07,-95908.0,-0.86,VALID
+PROP-B8888E831EFC,Bengaluru,Apartment,hist_hpi_market,P50 (136.97),139.38,136.97,11126201.0,1.1126202e+07,0.0,0.0,VALID
+PROP-B8888E831EFC,Bengaluru,Apartment,hist_hpi_market,P75 (139.57),139.38,139.57,11126201.0,1.1126202e+07,0.0,0.0,VALID
+PROP-B8888E831EFC,Bengaluru,Apartment,hist_hpi_market,P90 (141.75),139.38,141.75,11126201.0,1.1126202e+07,0.0,0.0,VALID
+PROP-B2BD4E3603E1,Bengaluru,Independent House,hist_hpi_market,P10 (133.18),139.38,133.18,27380700.0,2.6807e+07,-573700.0,-2.1,VALID
+PROP-B2BD4E3603E1,Bengaluru,Independent House,hist_hpi_market,P25 (133.84),139.38,133.84,27380700.0,2.7144676e+07,-236024.0,-0.86,VALID
+PROP-B2BD4E3603E1,Bengaluru,Independent House,hist_hpi_market,P50 (136.97),139.38,136.97,27380700.0,2.73807e+07,0.0,0.0,VALID
+PROP-B2BD4E3603E1,Bengaluru,Independent House,hist_hpi_market,P75 (139.57),139.38,139.57,27380700.0,2.73807e+07,0.0,0.0,VALID
+PROP-B2BD4E3603E1,Bengaluru,Independent House,hist_hpi_market,P90 (141.75),139.38,141.75,27380700.0,2.73807e+07,0.0,0.0,VALID

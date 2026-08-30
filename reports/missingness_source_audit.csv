@@ -1,0 +1,23 @@
+feature,source_dataset,source_column,transformation,expected_coverage,actual_coverage,status
+age_years,primary_property.csv,Description,parsed via regex,14021,6,SOURCE_LIMITATION
+year_built,primary_property.csv,Description,parsed via regex,14021,6,SOURCE_LIMITATION
+super_builtup_area_sqft,primary_property.csv,Description,parsed via regex,14021,10,SOURCE_LIMITATION
+plot_area_sqft,primary_property.csv,Description,parsed via regex,14021,10,SOURCE_LIMITATION
+carpet_area_sqft,primary_property.csv,Description,parsed via regex,14021,1492,SOURCE_LIMITATION
+builtup_area_sqft,primary_property.csv,Total_Area,cleaned and converted,14021,14021,COMPLETE
+furnishing,primary_property.csv,Description,parsed via regex,14021,153,SOURCE_LIMITATION
+parking,primary_property.csv,Description,parsed via regex,14021,333,SOURCE_LIMITATION
+facing,primary_property.csv,Description,parsed via regex,14021,1441,SOURCE_LIMITATION
+floor_no,primary_property.csv,Description/Title,parsed via regex,14021,8976,SOURCE_LIMITATION
+total_floors,primary_property.csv,Description/Title,parsed via regex,14021,7124,SOURCE_LIMITATION
+rera_id,rera_clean.csv,rera_id,joined on match_key,14021,5021,LEGITIMATE_UNMATCHED
+unsold_inventory,rera_clean.csv,unsold_units,joined on match_key,14021,5021,LEGITIMATE_UNMATCHED
+completion_percent,rera_clean.csv,derived from dates,joined on match_key,14021,5021,LEGITIMATE_UNMATCHED
+construction_duration_months,rera_clean.csv,derived from dates,joined on match_key,14021,5021,LEGITIMATE_UNMATCHED
+project_age,rera_clean.csv,derived from dates,joined on match_key,14021,5021,LEGITIMATE_UNMATCHED
+unsold_units,rera_clean.csv,unsold_units,joined on match_key,14021,5021,LEGITIMATE_UNMATCHED
+avg_monthly_rent,rental_clean.csv,median_monthly_rent,joined on city+locality,14021,10586,LEGITIMATE_UNMATCHED
+median_monthly_rent,rental_clean.csv,median_monthly_rent,joined on city+locality,14021,10586,LEGITIMATE_UNMATCHED
+avg_rent_per_sqft,rental_clean.csv,median_rent_per_sqft,joined on city+locality,14021,10586,LEGITIMATE_UNMATCHED
+median_rent_per_sqft,rental_clean.csv,median_rent_per_sqft,joined on city+locality,14021,10586,LEGITIMATE_UNMATCHED
+rental_yield_pct,rental_clean.csv,rental_yield_pct,joined on city+locality,14021,10586,LEGITIMATE_UNMATCHED

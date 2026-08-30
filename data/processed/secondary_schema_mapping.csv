@@ -1,0 +1,29 @@
+secondary_column,canonical_column,compatibility,unit_compatibility,notes
+ListingID,property_master_id,PARTIAL,N/A,Different format; secondary uses HP##### prefix vs PROP-SHA256
+City,city,PARTIAL,N/A,"INCOMPATIBLE VALUES: secondary has MMR (not canonical), Ahmedabad (not in primary 7 cities), Delhi NCR (vs Delhi)"
+Locality,locality,PARTIAL,N/A,Same concept; secondary has cleaner locality names; different geographic coverage
+PropertyType,property_type,FULL,N/A,"High overlap: Apartment, Villa, Independent House, Penthouse, Studio, Row House — all canonical"
+BHK,bhk,PARTIAL,N/A,INCOMPATIBLE: secondary has BHK=0 for Studio (779 rows); primary starts at BHK=1
+Bathrooms,bathrooms,FULL,N/A,Compatible integer count; secondary range 1–7
+Balconies,balconies,INCOMPATIBLE,N/A,PRIMARY is binary 0/1; SECONDARY is count 0–3; semantically different
+Furnishing,furnishing,PARTIAL,N/A,"LABEL MISMATCH: secondary uses ""Furnished"" (not ""Fully-Furnished"") vs primary canonical ""Fully-Furnished"""
+SuperBuiltUpArea_sqft,super_builtup_area_sqft,FULL,sqft,Identical unit (sqft); secondary has this fully populated; primary is 99.9% null from descriptions only
+BuiltUpArea_sqft,builtup_area_sqft,FULL,sqft,Identical unit (sqft); directly compatible
+CarpetArea_sqft,carpet_area_sqft,FULL,sqft,Identical unit (sqft); fully populated in secondary vs 89% null in primary
+Floor,floor_no,FULL,level,Compatible; both 0-indexed (0=ground)
+TotalFloors,total_floors,FULL,count,Compatible integer count
+Parking,parking,INCOMPATIBLE,N/A,PRIMARY is count (0–10); SECONDARY is categorical (Covered/Open/Basement/Stilt) — type mismatch
+BuildingType,,NEW,N/A,NOT IN PRIMARY SCHEMA: High Rise/Mid Rise/Low Rise/Gated Community/Standalone/Bungalow — valuable new feature
+YearBuilt,year_built,FULL,year,Compatible year integer; secondary has 1985–2025 range
+AgeYears,age_years,FULL,years,Compatible; both current_year - year_built
+Facing,facing,FULL,N/A,All 8 directions identical to canonical: N/S/E/W/NE/NW/SE/SW
+AmenitiesCount,,NEW,count,NOT IN PRIMARY SCHEMA: integer amenity count (3–12) — valuable new feature
+IsRERARegistered,rera_registered,INCOMPATIBLE,N/A,PRIMARY: 0/1 integer (mentions detected); SECONDARY: bool True/False — type difference; semantics match
+RERAID,rera_id,FULL,N/A,Both string alphanumeric RERA IDs; compatible
+Latitude,latitude,FULL,degrees,WGS-84 compatible; secondary has 95 nulls; PRIMARY is 100% null (requires geocoding)
+Longitude,longitude,FULL,degrees,WGS-84 compatible; secondary has 103 nulls; PRIMARY is 100% null
+Price_INR,price_inr,FULL,INR,"UNIT COMPATIBLE: both absolute INR; secondary train only (4,728 rows); test set has no price"
+,price_lakhs,MISSING,N/A,NOT IN SECONDARY: must derive as Price_INR / 100000
+,price_per_sqft,MISSING,N/A,NOT IN SECONDARY: must derive as Price_INR / BuiltUpArea_sqft
+,plot_area_sqft,MISSING,N/A,NOT IN SECONDARY: not present in any column
+,listing_date,MISSING,N/A,NOT IN SECONDARY: not available (also missing in primary)
