@@ -31,24 +31,65 @@
 }
 
 [data-theme='dark'] {
-  --bg-page: #0f172a;
-  --bg-sidebar: #1e293b;
-  --bg-card: #1e293b;
-  --border-color: #334155;
-  --border-color-hover: #475569;
+  --bg-page: #090d16;
+  --bg-sidebar: #0f172a;
+  --bg-card: #131c2e;
+  --bg-subtle: #19243b;
+  --border-color: rgba(255, 255, 255, 0.08);
+  --border-color-hover: rgba(99, 102, 241, 0.4);
   --text-primary: #f8fafc;
   --text-secondary: #cbd5e1;
   --text-muted: #64748b;
   
-  --bg-indigo-light: rgba(79, 70, 229, 0.15);
-  --bg-blue-light: rgba(59, 130, 246, 0.15);
-  --bg-purple-light: rgba(139, 92, 246, 0.15);
-  --bg-green-light: rgba(16, 185, 129, 0.15);
-  --bg-red-light: rgba(239, 68, 68, 0.15);
-  --bg-amber-light: rgba(245, 158, 11, 0.15);
+  --bg-indigo-light: rgba(99, 102, 241, 0.16);
+  --bg-blue-light: rgba(59, 130, 246, 0.16);
+  --bg-purple-light: rgba(168, 85, 247, 0.16);
+  --bg-green-light: rgba(16, 185, 129, 0.16);
+  --bg-red-light: rgba(239, 68, 68, 0.16);
+  --bg-amber-light: rgba(245, 158, 11, 0.16);
 
-  --card-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.2);
-  --card-shadow-hover: 0 10px 15px -3px rgba(0, 0, 0, 0.3);
+  --card-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37), inset 0 1px 0 0 rgba(255, 255, 255, 0.05);
+  --card-shadow-hover: 0 12px 40px 0 rgba(79, 70, 229, 0.25), 0 0 20px 0 rgba(99, 102, 241, 0.15), inset 0 1px 0 0 rgba(255, 255, 255, 0.1);
+}
+
+[data-theme='dark'] .metric-card,
+[data-theme='dark'] .saas-card,
+[data-theme='dark'] .detail-tile,
+[data-theme='dark'] .action-btn,
+[data-theme='dark'] .scenario-card,
+[data-theme='dark'] .market-item,
+[data-theme='dark'] .modal-card {
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+[data-theme='dark'] input,
+[data-theme='dark'] select {
+  background-color: #172238 !important;
+  border-color: rgba(255, 255, 255, 0.12) !important;
+  color: #f8fafc !important;
+}
+
+[data-theme='dark'] input:focus,
+[data-theme='dark'] select:focus {
+  border-color: #6366f1 !important;
+  box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.3) !important;
+}
+
+[data-theme='dark'] .nav-item:hover {
+  background-color: rgba(255, 255, 255, 0.05);
+  color: #ffffff;
+}
+
+[data-theme='dark'] .theme-toggle-pill {
+  background-color: #090d16;
+  border-color: rgba(255, 255, 255, 0.1);
+}
+
+[data-theme='dark'] .theme-btn.active {
+  background-color: #1a263d;
+  color: #ffffff;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.4);
 }
 
 * {
