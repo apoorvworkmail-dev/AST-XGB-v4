@@ -7,6 +7,13 @@ import {
 } from 'lucide-react';
 
 import { CITY_LOCALITIES } from './data/cityLocalities';
+import { PropertyAnalysisView } from './components/PropertyAnalysisView';
+import { MarketInsightsView } from './components/MarketInsightsView';
+import { WhatIfSimulatorView } from './components/WhatIfSimulatorView';
+import { SavedPropertiesView } from './components/SavedPropertiesView';
+import { ReportsView } from './components/ReportsView';
+import { ApiDocsView } from './components/ApiDocsView';
+import { SettingsView } from './components/SettingsView';
 
 const API_BASE_URL = 'http://localhost:8000/api/v1';
 
@@ -285,8 +292,11 @@ export default function App() {
           </div>
         )}
 
-        {/* Top Metric Summary Cards Grid */}
-        <div className="metrics-grid">
+        {/* Render Tab Views */}
+        {(activeTab === 'Overview' || activeTab === 'Prediction') && (
+          <React.Fragment>
+            {/* Top Metric Summary Cards Grid */}
+            <div className="metrics-grid">
           {/* Card 1: Predicted Price */}
           <div className="metric-card">
             <div className="metric-header">
@@ -670,6 +680,70 @@ export default function App() {
             ))}
           </div>
         </div>
+        </React.Fragment>
+        )}
+
+        {activeTab === 'Analysis' && (
+          <PropertyAnalysisView
+            city={city}
+            locality={locality}
+            propertyType={propertyType}
+            area={area}
+            bedrooms={bedrooms}
+            bathrooms={bathrooms}
+            age={age}
+            floor={floor}
+            totalFloors={totalFloors}
+            prediction={prediction}
+            onEditDetails={() => setIsModalOpen(true)}
+          />
+        )}
+
+        {activeTab === 'Market' && (
+          <MarketInsightsView city={city} />
+        )}
+
+        {activeTab === 'Simulator' && (
+          <WhatIfSimulatorView
+            city={city}
+            locality={locality}
+            propertyType={propertyType}
+            baseArea={area}
+            baseBhk={bedrooms}
+            baseBathrooms={bathrooms}
+            baseAge={age}
+            baseFloor={floor}
+            baseTotalFloors={totalFloors}
+            basePrice={prediction ? prediction.predicted_price_inr : 10400000}
+          />
+        )}
+
+        {activeTab === 'Saved' && (
+          <SavedPropertiesView
+            currentProperty={{
+              city,
+              locality,
+              propertyType,
+              area,
+              bedrooms,
+              bathrooms,
+              price: prediction ? prediction.predicted_price_formatted : '₹ 1.04 Cr',
+              ppsf: prediction ? prediction.price_per_sqft : Math.round(10400000 / area)
+            }}
+          />
+        )}
+
+        {activeTab === 'Reports' && (
+          <ReportsView />
+        )}
+
+        {activeTab === 'Docs' && (
+          <ApiDocsView />
+        )}
+
+        {activeTab === 'Settings' && (
+          <SettingsView theme={theme} setTheme={setTheme} />
+        )}
       </main>
 
       {/* Property Input Modal Window */}

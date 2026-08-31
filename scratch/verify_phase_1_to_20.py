@@ -102,6 +102,7 @@ pdf_count = len(list(fig17_dir.glob("*.pdf")))
 print(f"  ✓ Phase 17 Figures directory: {png_count} PNGs (300 DPI) and {pdf_count} PDFs found.")
 if png_count < 28 or pdf_count < 28:
     errors.append(f"Expected 28 PNG and 28 PDF paper figures in figures/phase_17/, found PNG:{png_count}, PDF:{pdf_count}")
+    
     audit_passed = False
 
 # ── 6. Feature-Group Ablation Study Audit (Phase 18) ──────────────────────────
