@@ -6,6 +6,8 @@ import {
   Clock, Moon, Sun, X, PlusCircle, ArrowUp, ArrowDown, User
 } from 'lucide-react';
 
+import { CITY_LOCALITIES } from './data/cityLocalities';
+
 const API_BASE_URL = 'http://localhost:8000/api/v1';
 
 interface PredictionResult {
@@ -55,6 +57,14 @@ export default function App() {
   const [floor, setFloor] = useState<number>(5);
   const [totalFloors, setTotalFloors] = useState<number>(12);
   const [locality, setLocality] = useState<string>('Whitefield');
+
+  const handleCityChange = (newCity: string) => {
+    setCity(newCity);
+    const locs = CITY_LOCALITIES[newCity] || [];
+    if (locs.length > 0 && !locs.includes(locality)) {
+      setLocality(locs[0]);
+    }
+  };
 
   // Modal State
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
@@ -682,8 +692,8 @@ export default function App() {
             <div className="form-group-grid">
               <div className="form-group">
                 <label>City</label>
-                <select value={city} onChange={e => setCity(e.target.value)}>
-                  {['Bengaluru', 'Chennai', 'Delhi', 'Hyderabad', 'Kolkata', 'Mumbai', 'Pune'].map(c => (
+                <select value={city} onChange={e => handleCityChange(e.target.value)}>
+                  {Object.keys(CITY_LOCALITIES).map(c => (
                     <option key={c} value={c}>{c}</option>
                   ))}
                 </select>
@@ -707,7 +717,11 @@ export default function App() {
 
               <div className="form-group">
                 <label>Neighborhood / Locality</label>
-                <input type="text" value={locality} onChange={e => setLocality(e.target.value)} />
+                <select value={locality} onChange={e => setLocality(e.target.value)}>
+                  {(CITY_LOCALITIES[city] || [locality]).map(loc => (
+                    <option key={loc} value={loc}>{loc}</option>
+                  ))}
+                </select>
               </div>
             </div>
 
