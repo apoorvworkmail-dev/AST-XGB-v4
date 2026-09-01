@@ -151,6 +151,7 @@ class MarketStateResponseSchema(BaseModel):
     transaction_volume_90d: float
     price_dispersion: float
     interest_rate: float
+    city_prices: Optional[List[Dict[str, Any]]] = Field(None, description="Actual predicted prices and rates per city")
 
 
 class HealthCheckResponseSchema(BaseModel):
