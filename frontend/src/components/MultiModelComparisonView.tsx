@@ -282,6 +282,17 @@ export const MultiModelComparisonView: React.FC<MultiModelComparisonViewProps> =
                   <td style={{ padding: '12px 14px' }}>₹ {(item.rmse_inr / 100000).toFixed(2)} L</td>
                 </tr>
               ))}
+
+              {/* Ensemble Row matching user specification */}
+              <tr style={{ background: 'rgba(34, 197, 94, 0.08)', borderTop: '2px solid var(--success-green)', fontWeight: 700 }}>
+                <td style={{ padding: '12px 14px', color: 'var(--success-green)' }}>—</td>
+                <td style={{ padding: '12px 14px', color: 'var(--success-green)', fontSize: '14px' }}>Ensemble</td>
+                <td style={{ padding: '12px 14px', color: 'var(--success-green)', fontSize: '14px' }}>{ensemble_prediction.predicted_price_formatted}</td>
+                <td style={{ padding: '12px 14px', color: 'var(--success-green)' }}>Reference Base</td>
+                <td style={{ padding: '12px 14px', color: 'var(--success-green)' }}>100.0%</td>
+                <td style={{ padding: '12px 14px', color: 'var(--text-muted)' }}>—</td>
+                <td style={{ padding: '12px 14px', color: 'var(--text-muted)' }}>—</td>
+              </tr>
             </tbody>
           </table>
         </div>

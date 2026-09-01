@@ -24,13 +24,15 @@ interface ModelSelectionPanelProps {
   setSelectedModels: (models: string[]) => void;
   ensembleMethod: string;
   setEnsembleMethod: (method: string) => void;
+  onCompareAllModels?: () => void;
 }
 
 export const ModelSelectionPanel: React.FC<ModelSelectionPanelProps> = ({
   selectedModels,
   setSelectedModels,
   ensembleMethod,
-  setEnsembleMethod
+  setEnsembleMethod,
+  onCompareAllModels
 }) => {
   const toggleModel = (key: string) => {
     if (selectedModels.includes(key)) {
@@ -46,6 +48,13 @@ export const ModelSelectionPanel: React.FC<ModelSelectionPanelProps> = ({
 
   const clearAll = () => {
     setSelectedModels([]);
+  };
+
+  const handleCompareAllClick = () => {
+    selectAll();
+    if (onCompareAllModels) {
+      onCompareAllModels();
+    }
   };
 
   return (
@@ -82,10 +91,23 @@ export const ModelSelectionPanel: React.FC<ModelSelectionPanelProps> = ({
           </button>
           <button
             type="button"
-            onClick={selectAll}
-            style={{ background: 'linear-gradient(135deg, #4f46e5, #3b82f6)', color: '#fff', border: 'none', padding: '4px 12px', borderRadius: '6px', fontSize: '12px', fontWeight: 600, cursor: 'pointer' }}
+            onClick={handleCompareAllClick}
+            style={{
+              background: 'linear-gradient(135deg, #4f46e5, #2563eb)',
+              color: '#ffffff',
+              border: 'none',
+              padding: '6px 14px',
+              borderRadius: '8px',
+              fontSize: '13px',
+              fontWeight: 700,
+              cursor: 'pointer',
+              display: 'flex',
+              alignItems: 'center',
+              gap: '6px',
+              boxShadow: '0 4px 12px rgba(79, 70, 229, 0.3)'
+            }}
           >
-            Compare All 7 Models
+            Compare All Models →
           </button>
         </div>
       </div>
