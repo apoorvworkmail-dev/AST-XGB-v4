@@ -31,6 +31,7 @@ VALID_PROPERTY_TYPES = ['Apartment', 'Independent House', 'Penthouse', 'Villa', 
 # Default medians for non-mandatory modeling features
 DEFAULT_FEATURE_VALUES = {
     'city': 'Bengaluru',
+    'locality': 'Whitefield',
     'property_type': 'Apartment',
     'bhk': 2,
     'bathrooms': 2,

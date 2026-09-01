@@ -32,3 +32,4 @@ scratch/*.tmp
 .idea/
 .DS_Store
 Thumbs.db
+catboost_info/

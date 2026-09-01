@@ -1,0 +1,79 @@
+[
+  {
+    "R2": 0.4136,
+    "MAE": 4247158.49,
+    "RMSE": 14178143.53,
+    "MAPE": 42.49,
+    "model_key": "lightgbm",
+    "display_name": "LightGBM",
+    "train_time_sec": 1.636,
+    "inference_time_ms": 0.002,
+    "rank": 1
+  },
+  {
+    "R2": 0.4103,
+    "MAE": 4279218.5,
+    "RMSE": 14217968.27,
+    "MAPE": 43.4,
+    "model_key": "xgboost",
+    "display_name": "XGBoost",
+    "train_time_sec": 1.747,
+    "inference_time_ms": 0.003,
+    "rank": 2
+  },
+  {
+    "R2": 0.397,
+    "MAE": 4361375.81,
+    "RMSE": 14377355.88,
+    "MAPE": 44.16,
+    "model_key": "random_forest",
+    "display_name": "Random Forest",
+    "train_time_sec": 9.815,
+    "inference_time_ms": 0.016,
+    "rank": 3
+  },
+  {
+    "R2": 0.3957,
+    "MAE": 4252556.3,
+    "RMSE": 14392626.13,
+    "MAPE": 41.59,
+    "model_key": "gradient_boosting",
+    "display_name": "Gradient Boosting",
+    "train_time_sec": 107.601,
+    "inference_time_ms": 0.005,
+    "rank": 4
+  },
+  {
+    "R2": 0.3634,
+    "MAE": 4418741.47,
+    "RMSE": 14772119.15,
+    "MAPE": 42.81,
+    "model_key": "catboost",
+    "display_name": "CatBoost",
+    "train_time_sec": 1.508,
+    "inference_time_ms": 0.002,
+    "rank": 5
+  },
+  {
+    "R2": 0.3226,
+    "MAE": 4823263.71,
+    "RMSE": 15237766.78,
+    "MAPE": 52.32,
+    "model_key": "linear_regression",
+    "display_name": "Linear Regression",
+    "train_time_sec": 1.915,
+    "inference_time_ms": 0.003,
+    "rank": 6
+  },
+  {
+    "R2": -35.6103,
+    "MAE": 54262746.4,
+    "RMSE": 112023303.27,
+    "MAPE": 749.61,
+    "model_key": "mlp",
+    "display_name": "MLP (Neural Net)",
+    "train_time_sec": 7.327,
+    "inference_time_ms": 0.002,
+    "rank": 7
+  }
+]

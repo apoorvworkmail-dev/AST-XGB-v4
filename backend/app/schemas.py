@@ -1,5 +1,6 @@
 """
-Phase 22 — Pydantic Request & Response Schemas for FastAPI Valuation Backend.
+Pydantic Request & Response Schemas for FastAPI Valuation Backend.
+Supports Single-Model and Multi-Model Ensemble Inferences.
 AST-XGB Real Estate Property Price Valuation System
 Author: Apoorv Mishra
 """
@@ -18,8 +19,8 @@ class PropertyInputSchema(BaseModel):
     bedrooms: Optional[int] = Field(None, example=3, description="Alternative field for bedrooms / BHK")
     
     bathrooms: Optional[int] = Field(2, example=2, description="Number of bathrooms")
-    property_type: str = Field("Apartment", example="Apartment", description="Property classification (Apartment, Independent House, Penthouse, Villa, Builder Floor)")
-    city: str = Field("Bengaluru", example="Bengaluru", description="Indian city (Bengaluru, Chennai, Delhi, Hyderabad, Kolkata, Mumbai, Pune)")
+    property_type: str = Field("Apartment", example="Apartment", description="Property classification")
+    city: str = Field("Bengaluru", example="Bengaluru", description="Indian city")
     
     project_age: Optional[float] = Field(None, example=3.0, description="Property age in years")
     age: Optional[float] = Field(None, example=3.0, description="Alternative field for property age")
@@ -33,11 +34,23 @@ class PropertyInputSchema(BaseModel):
     latitude: Optional[float] = Field(12.9716, example=12.9716, description="Property latitude")
     longitude: Optional[float] = Field(77.5946, example=77.5946, description="Property longitude")
 
+    # Multi-model platform extensions
+    selected_models: Optional[List[str]] = Field(
+        default=["xgboost"],
+        example=["linear_regression", "xgboost", "lightgbm"],
+        description="List of selected ML models for inference"
+    )
+    ensemble_method: Optional[str] = Field(
+        default="equal_weight",
+        example="equal_weight",
+        description="Ensemble method: 'equal_weight' or 'performance_weighted'"
+    )
+
     @validator('builtup_area_sqft', pre=True, always=True)
     def validate_area(cls, v, values):
         val = v if v is not None else values.get('area')
         if val is None:
-            return 1200.0  # Default fallback
+            return 1200.0
         try:
             val_f = float(val)
             if val_f < 100 or val_f > 50000:
@@ -50,7 +63,7 @@ class PropertyInputSchema(BaseModel):
     def validate_bhk(cls, v, values):
         val = v if v is not None else values.get('bedrooms')
         if val is None:
-            return 2  # Default fallback
+            return 2
         try:
             val_i = int(val)
             if val_i < 1 or val_i > 20:
@@ -79,13 +92,15 @@ class PropertyInputSchema(BaseModel):
                 "bathrooms": 2,
                 "city": "Bengaluru",
                 "property_type": "Apartment",
-                "locality": "Whitefield"
+                "locality": "Whitefield",
+                "selected_models": ["linear_regression", "xgboost", "lightgbm"],
+                "ensemble_method": "equal_weight"
             }
         }
 
 
 class PredictionResponseSchema(BaseModel):
-    predicted_price_inr: float = Field(..., description="AST-XGB point price prediction in INR")
+    predicted_price_inr: float = Field(..., description="Point price prediction or Ensemble estimate in INR")
     predicted_price_formatted: str = Field(..., description="User-friendly formatted price in Lakhs/Crores")
     price_per_sqft: float = Field(..., description="Valuation per sqft in INR")
     conformal_lower_90_inr: float = Field(..., description="90% Conformal prediction interval lower bound in INR")
@@ -98,6 +113,7 @@ class PredictionResponseSchema(BaseModel):
     model_version: str = Field(..., description="Validated ML model version string")
     feature_version: str = Field("v4", description="Feature engineering version")
     validation_warnings: List[str] = Field(default=[], description="Input validation warnings if any")
+    multi_model_results: Optional[Dict[str, Any]] = Field(None, description="Multi-model predictions, spread, and comparison matrix")
 
 
 class SHAPDriverSchema(BaseModel):
@@ -135,3 +151,9 @@ class MarketStateResponseSchema(BaseModel):
     transaction_volume_90d: float
     price_dispersion: float
     interest_rate: float
+
+
+class HealthCheckResponseSchema(BaseModel):
+    status: str
+    backend_version: str
+    model_loaded: bool
