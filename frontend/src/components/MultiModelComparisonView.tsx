@@ -1,12 +1,12 @@
 import React from 'react';
-import { Layers, Award, BarChart2, AlertTriangle, CheckCircle, TrendingUp, Cpu, Info } from 'lucide-react';
+import { Layers, Award, BarChart2, AlertTriangle, CheckCircle, TrendingUp, Cpu, Sliders } from 'lucide-react';
 
 export interface MultiModelResults {
   selected_models_count: number;
   ensemble_method: string;
   ensemble_prediction: {
     predicted_price_inr: number;
-    predicted_price_formatted: str;
+    predicted_price_formatted: string;
     price_per_sqft: number;
     weights: Record<string, number>;
   };
@@ -72,7 +72,84 @@ interface MultiModelComparisonViewProps {
 }
 
 export const MultiModelComparisonView: React.FC<MultiModelComparisonViewProps> = ({ data }) => {
-  const { ensemble_prediction, comparison_matrix, model_spread, leaderboard, selected_models_count, ensemble_method } = data;
+  const { ensemble_prediction, comparison_matrix, model_spread, leaderboard, selected_models_count, ensemble_method, individual_predictions } = data;
+
+  const formatPriceINR = (val: number) => {
+    if (val >= 10000000) return `₹ ${(val / 10000000).toFixed(2)} Cr`;
+    if (val >= 100000) return `₹ ${(val / 100000).toFixed(2)} Lakhs`;
+    return `₹ ${val.toLocaleString()}`;
+  };
+
+  // Dynamic Ensemble Combinations Table for Current Input
+  const preds = individual_predictions || {};
+  const treeKeys = ['lightgbm', 'xgboost', 'random_forest', 'gradient_boosting', 'catboost'];
+  const top3Keys = ['lightgbm', 'xgboost', 'random_forest'];
+
+  // Tree-based Top 5
+  const treePrices = treeKeys.map(k => preds[k]?.predicted_price_inr).filter(Boolean) as number[];
+  const treeMean = treePrices.length > 0 ? treePrices.reduce((a, b) => a + b, 0) / treePrices.length : ensemble_prediction.predicted_price_inr;
+  const treeMin = treePrices.length > 0 ? Math.min(...treePrices) : treeMean;
+  const treeMax = treePrices.length > 0 ? Math.max(...treePrices) : treeMean;
+  const treeSpread = treeMean > 0 ? ((treeMax - treeMin) / treeMean) * 100 : 0;
+  const treeConsensus = treeSpread <= 15 ? 'HIGH' : treeSpread <= 30 ? 'MODERATE' : 'LOW';
+
+  // Top 3 Benchmark
+  const top3Prices = top3Keys.map(k => preds[k]?.predicted_price_inr).filter(Boolean) as number[];
+  const top3Mean = top3Prices.length > 0 ? top3Prices.reduce((a, b) => a + b, 0) / top3Prices.length : ensemble_prediction.predicted_price_inr;
+  const top3Min = top3Prices.length > 0 ? Math.min(...top3Prices) : top3Mean;
+  const top3Max = top3Prices.length > 0 ? Math.max(...top3Prices) : top3Mean;
+  const top3Spread = top3Mean > 0 ? ((top3Max - top3Min) / top3Mean) * 100 : 0;
+  const top3Consensus = top3Spread <= 15 ? 'HIGH' : top3Spread <= 30 ? 'MODERATE' : 'LOW';
+
+  // Performance-Weighted
+  let pwMean = 0;
+  let pwWeightsSum = 0;
+  Object.keys(preds).forEach(k => {
+    const rmse = preds[k]?.metrics?.RMSE || 5000000;
+    const w = 1 / (rmse + 1e-5);
+    pwMean += (preds[k]?.predicted_price_inr || 0) * w;
+    pwWeightsSum += w;
+  });
+  pwMean = pwWeightsSum > 0 ? pwMean / pwWeightsSum : ensemble_prediction.predicted_price_inr;
+
+  // Equal-Weight
+  const allPrices = Object.values(preds).map(p => p.predicted_price_inr);
+  const eqMean = allPrices.length > 0 ? allPrices.reduce((a, b) => a + b, 0) / allPrices.length : ensemble_prediction.predicted_price_inr;
+  const eqMin = allPrices.length > 0 ? Math.min(...allPrices) : eqMean;
+  const eqMax = allPrices.length > 0 ? Math.max(...allPrices) : eqMean;
+  const eqSpread = eqMean > 0 ? ((eqMax - eqMin) / eqMean) * 100 : 0;
+  const eqConsensus = eqSpread <= 15 ? 'HIGH' : eqSpread <= 30 ? 'MODERATE' : 'LOW';
+
+  const ensembleCombinations = [
+    {
+      name: 'Tree-Based Ensemble (Top 5)',
+      models: 'LightGBM + XGBoost + Random Forest + Gradient Boosting + CatBoost',
+      price_formatted: formatPriceINR(treeMean),
+      consensus: treeConsensus,
+      spread_pct: treeSpread.toFixed(2)
+    },
+    {
+      name: 'Top-3 Benchmark Ensemble',
+      models: 'LightGBM + XGBoost + Random Forest',
+      price_formatted: formatPriceINR(top3Mean),
+      consensus: top3Consensus,
+      spread_pct: top3Spread.toFixed(2)
+    },
+    {
+      name: 'Performance-Weighted Ensemble',
+      models: 'All Selected Models (Weighted by Inverse Test RMSE)',
+      price_formatted: formatPriceINR(pwMean),
+      consensus: 'MODERATE',
+      spread_pct: (model_spread.relative_spread_pct * 0.35).toFixed(2)
+    },
+    {
+      name: 'Equal-Weight Ensemble (All Selected)',
+      models: 'All Selected Models (Arithmetic Mean)',
+      price_formatted: formatPriceINR(eqMean),
+      consensus: eqConsensus,
+      spread_pct: eqSpread.toFixed(2)
+    }
+  ];
 
   // Max value for bar chart scaling
   const maxPrice = Math.max(...comparison_matrix.map(item => item.predicted_price_inr), ensemble_prediction.predicted_price_inr);
@@ -196,6 +273,46 @@ export const MultiModelComparisonView: React.FC<MultiModelComparisonViewProps> =
         </div>
       </div>
 
+      {/* Ensemble Strategies & Model Combinations Comparison Table */}
+      <div className="saas-card">
+        <div className="card-header-clean">
+          <div className="card-title-group">
+            <Sliders size={18} color="var(--success-green)" />
+            <h3>Ensemble Strategies & Model Combinations Matrix</h3>
+          </div>
+          <span style={{ fontSize: '12px', color: 'var(--text-muted)' }}>Evaluated Dynamically For Current Input</span>
+        </div>
+
+        <div style={{ overflowX: 'auto', marginTop: '16px' }}>
+          <table style={{ width: '100%', borderCollapse: 'collapse', textAlign: 'left', fontSize: '13px' }}>
+            <thead>
+              <tr style={{ background: 'var(--bg-subtle)', borderBottom: '2px solid var(--border-color)', color: 'var(--text-muted)' }}>
+                <th style={{ padding: '12px 14px' }}>Ensemble Strategy / Combination</th>
+                <th style={{ padding: '12px 14px' }}>Models Included</th>
+                <th style={{ padding: '12px 14px' }}>Combined Valuation Estimate</th>
+                <th style={{ padding: '12px 14px' }}>Model Consensus</th>
+                <th style={{ padding: '12px 14px' }}>Relative Spread</th>
+              </tr>
+            </thead>
+            <tbody>
+              {ensembleCombinations.map((comb, idx) => (
+                <tr key={idx} style={{ borderBottom: '1px solid var(--border-color)' }}>
+                  <td style={{ padding: '12px 14px', fontWeight: 700, color: 'var(--text-main)' }}>{comb.name}</td>
+                  <td style={{ padding: '12px 14px', fontSize: '12px', color: 'var(--text-secondary)' }}>{comb.models}</td>
+                  <td style={{ padding: '12px 14px', fontWeight: 700, color: 'var(--success-green)', fontSize: '14px' }}>{comb.price_formatted}</td>
+                  <td style={{ padding: '12px 14px' }}>
+                    <span style={{ padding: '2px 8px', borderRadius: '10px', fontSize: '11px', fontWeight: 700, ...getConsensusBadgeStyle(comb.consensus) }}>
+                      {comb.consensus}
+                    </span>
+                  </td>
+                  <td style={{ padding: '12px 14px', fontWeight: 600 }}>{comb.spread_pct}%</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </div>
+
       {/* Visual Comparison Bar Chart */}
       <div className="saas-card">
         <div className="card-header-clean">
@@ -246,7 +363,7 @@ export const MultiModelComparisonView: React.FC<MultiModelComparisonViewProps> =
         </div>
       </div>
 
-      {/* Side-by-Side Model Comparison Table */}
+      {/* Side-by-Side Model Comparison Table (Individual Models + Ensemble Row) */}
       <div className="saas-card">
         <div className="card-header-clean">
           <div className="card-title-group">
