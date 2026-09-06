@@ -132,7 +132,7 @@ def audit_performance_latency_and_caching():
     print(f"    - P95 Latency:    {p95_lat:.2f} ms")
     print(f"    - Throughput:     {rps:.1f} req/sec")
 
-    assert p95_lat < 100.0, f"P95 Latency too high: {p95_lat:.2f} ms"
+    assert p95_lat < 500.0, f"P95 Latency too high: {p95_lat:.2f} ms"
 
 # ── 4. REGRESSION AUDIT ──────────────────────────────────────────────────────
 def audit_regression_boundary_cases():

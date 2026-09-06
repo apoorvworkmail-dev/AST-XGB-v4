@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Activity, Moon, Sun, ShieldCheck, RefreshCw, CheckCircle, Server, Database } from 'lucide-react';
+import { checkBackendHealth, getApiBaseUrl } from '../utils/api';
 
 interface SettingsViewProps {
   theme: 'light' | 'dark';
@@ -7,7 +8,7 @@ interface SettingsViewProps {
 }
 
 export const SettingsView: React.FC<SettingsViewProps> = ({ theme, setTheme }) => {
-  const [apiUrl, setApiUrl] = useState<string>('http://localhost:8000/api/v1');
+  const [apiUrl, setApiUrl] = useState<string>(getApiBaseUrl());
   const [confidence, setConfidence] = useState<string>('90%');
   const [testResult, setTestResult] = useState<string | null>(null);
   const [testing, setTesting] = useState<boolean>(false);
@@ -17,8 +18,9 @@ export const SettingsView: React.FC<SettingsViewProps> = ({ theme, setTheme }) =
     setTestResult(null);
 
     try {
-      const res = await fetch('http://localhost:8000/api/v1/health');
-      const data = await res.json();
+      const health = await checkBackendHealth();
+      if (!health.isHealthy) throw new Error('Health check failed');
+      const data = health.data;
       setTestResult(`DIAGNOSTIC PASSED: Backend is HEALTHY. Model version: ${data.model_version}, Conformal q90: ₹ ${(data.conformal_q90_inr / 100000).toFixed(2)} L.`);
     } catch (e: any) {
       setTestResult('DIAGNOSTIC WARNING: Unable to connect to backend on http://localhost:8000.');

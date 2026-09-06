@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { TrendingUp, Activity, Globe, Layers, MapPin, DollarSign, BarChart2 } from 'lucide-react';
+import { apiFetch } from '../utils/api';
 
 interface MarketInsightsViewProps {
   city: string;
@@ -11,15 +12,20 @@ export const MarketInsightsView: React.FC<MarketInsightsViewProps> = ({ city, pr
   const [loading, setLoading] = useState<boolean>(true);
 
   useEffect(() => {
-    fetch('http://localhost:8000/api/v1/market-state')
-      .then(res => res.json())
-      .then(data => {
-        setMarketState(data);
+    const fetchMarketState = async () => {
+      try {
+        const res = await apiFetch('/market-state');
+        if (res.ok) {
+          const data = await res.json();
+          setMarketState(data);
+        }
+      } catch (err) {
+        console.warn('Could not fetch market state:', err);
+      } finally {
         setLoading(false);
-      })
-      .catch(() => {
-        setLoading(false);
-      });
+      }
+    };
+    fetchMarketState();
   }, [city]);
 
   const defaultCityPrices = [

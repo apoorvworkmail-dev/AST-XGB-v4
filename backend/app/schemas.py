@@ -8,7 +8,7 @@ Author: Apoorv Mishra
 from pydantic import BaseModel, Field, validator
 from typing import List, Dict, Any, Optional
 
-VALID_CITIES = ['Bengaluru', 'Chennai', 'Delhi', 'Hyderabad', 'Kolkata', 'Mumbai', 'Pune']
+VALID_CITIES = ['Bengaluru', 'Chennai', 'Delhi', 'Delhi NCR', 'Hyderabad', 'Kolkata', 'Mumbai', 'Pune']
 VALID_PROPERTY_TYPES = ['Apartment', 'Independent House', 'Penthouse', 'Villa', 'Builder Floor']
 
 class PropertyInputSchema(BaseModel):
@@ -74,6 +74,8 @@ class PropertyInputSchema(BaseModel):
 
     @validator('city')
     def validate_city(cls, v):
+        if v == 'Delhi NCR':
+            return 'Delhi'
         if v not in VALID_CITIES:
             raise ValueError(f"Invalid city '{v}'. Must be one of: {', '.join(VALID_CITIES)}")
         return v

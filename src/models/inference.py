@@ -155,8 +155,11 @@ class ProductionInferencePipeline:
                 warnings_list.append(f"Ignored prohibited target-leakage feature: {c_feat}")
 
         # Validate City
-        if 'city' in prop_dict and prop_dict['city'] in VALID_CITIES:
-            clean_input['city'] = prop_dict['city']
+        raw_city = prop_dict.get('city')
+        if raw_city == 'Delhi NCR':
+            raw_city = 'Delhi'
+        if raw_city in VALID_CITIES:
+            clean_input['city'] = raw_city
         elif 'city' in prop_dict:
             warnings_list.append(f"Invalid city '{prop_dict['city']}'. Defaulting to 'Bengaluru'.")
 

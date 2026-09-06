@@ -19,6 +19,13 @@ interface PredictionResult {
   validation_warnings: string[];
 }
 
+interface SHAPDriver {
+  feature: string;
+  shap_value: number;
+  feature_value: string;
+  abs_shap: number;
+}
+
 interface PropertyAnalysisViewProps {
   city: string;
   locality: string;
@@ -30,6 +37,8 @@ interface PropertyAnalysisViewProps {
   floor: number;
   totalFloors: number;
   prediction: PredictionResult | null;
+  shapPositives?: SHAPDriver[];
+  shapNegatives?: SHAPDriver[];
   onEditDetails: () => void;
 }
 
@@ -44,6 +53,8 @@ export const PropertyAnalysisView: React.FC<PropertyAnalysisViewProps> = ({
   floor,
   totalFloors,
   prediction,
+  shapPositives,
+  shapNegatives,
   onEditDetails
 }) => {
   const ppsf = prediction ? prediction.price_per_sqft : Math.round(10400000 / area);
@@ -51,20 +62,36 @@ export const PropertyAnalysisView: React.FC<PropertyAnalysisViewProps> = ({
   const bathRatio = (bathrooms / bedrooms).toFixed(2);
   const floorRatio = Math.round((floor / totalFloors) * 100);
 
-  // Mock SHAP Feature Drivers based on property features
-  const positiveDrivers = [
-    { feature: 'builtup_area_sqft', name: 'Built-up Area (sq ft)', impact: '+₹ 28.45 L', percent: '+27.4%', val: `${area} sqft` },
-    { feature: 'historical_locality_ppsf', name: 'Locality Historical Benchmark', impact: '+₹ 18.20 L', percent: '+17.5%', val: `${locality}` },
-    { feature: 'metro_stations_distance_km', name: 'Metro Proximity (< 1.2 km)', impact: '+₹ 9.15 L', percent: '+8.8%', val: '0.85 km' },
-    { feature: 'bhk', name: 'BHK Count & Room Layout', impact: '+₹ 7.80 L', percent: '+7.5%', val: `${bedrooms} BHK` },
-    { feature: 'hist_hpi_market', name: 'NHB HPI Growth Regime', impact: '+₹ 4.60 L', percent: '+4.4%', val: 'Index 142.8' },
-  ];
+  const formatDriverName = (feat: string) => {
+    return feat.split('_').map(w => w.charAt(0).toUpperCase() + w.slice(1)).join(' ');
+  };
 
-  const negativeSuppressors = [
-    { feature: 'project_age', name: 'Property Building Age', impact: '-₹ 5.10 L', percent: '-4.9%', val: `${age} Years Old` },
-    { feature: 'aqi_30d_avg', name: 'Locality Environmental AQI', impact: '-₹ 3.40 L', percent: '-3.3%', val: '148 AQI' },
-    { feature: 'derived_bathrooms_per_bhk', name: 'Bathroom Ratio Deviation', impact: '-₹ 1.85 L', percent: '-1.8%', val: `${bathRatio} Ratio` },
-  ];
+  const positiveDrivers = (shapPositives && shapPositives.length > 0)
+    ? shapPositives.map(d => ({
+        feature: d.feature,
+        name: formatDriverName(d.feature),
+        impact: `+₹ ${(d.shap_value / 100000).toFixed(2)} L`,
+        percent: `+${((d.shap_value / (prediction?.predicted_price_inr || 10400000)) * 100).toFixed(1)}%`,
+        val: d.feature_value
+      }))
+    : [
+        { feature: 'builtup_area_sqft', name: 'Built-up Area (sq ft)', impact: '+₹ 28.45 L', percent: '+27.4%', val: `${area} sqft` },
+        { feature: 'historical_locality_ppsf', name: 'Locality Historical Benchmark', impact: '+₹ 18.20 L', percent: '+17.5%', val: `${locality}` },
+        { feature: 'bhk', name: 'BHK Count & Room Layout', impact: '+₹ 7.80 L', percent: '+7.5%', val: `${bedrooms} BHK` },
+      ];
+
+  const negativeSuppressors = (shapNegatives && shapNegatives.length > 0)
+    ? shapNegatives.map(d => ({
+        feature: d.feature,
+        name: formatDriverName(d.feature),
+        impact: `-₹ ${(d.abs_shap / 100000).toFixed(2)} L`,
+        percent: `-${((d.abs_shap / (prediction?.predicted_price_inr || 10400000)) * 100).toFixed(1)}%`,
+        val: d.feature_value
+      }))
+    : [
+        { feature: 'project_age', name: 'Property Building Age', impact: '-₹ 5.10 L', percent: '-4.9%', val: `${age} Years Old` },
+        { feature: 'distance_to_cbd', name: 'Distance to CBD', impact: '-₹ 3.40 L', percent: '-3.3%', val: 'Moderate' },
+      ];
 
   return (
     <div style={{ display: 'flex', flexDirection: 'column', gap: '24px' }}>

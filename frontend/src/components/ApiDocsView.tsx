@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Cpu, Send, CheckCircle, AlertCircle, Play, Code } from 'lucide-react';
+import { apiFetch, getApiBaseUrl } from '../utils/api';
 
 export const ApiDocsView: React.FC = () => {
   const [activeEndpoint, setActiveEndpoint] = useState<string>('predict');
@@ -47,10 +48,8 @@ export const ApiDocsView: React.FC = () => {
     setLoading(true);
     setApiResponse(null);
 
-    const baseUrl = 'http://localhost:8000/api/v1';
-
     try {
-      let url = `${baseUrl}/${activeEndpoint}`;
+      let endpointPath = `/${activeEndpoint}`;
       let options: RequestInit = {};
 
       if (activeEndpoint === 'health' || activeEndpoint === 'market-state') {
@@ -63,7 +62,7 @@ export const ApiDocsView: React.FC = () => {
         };
       }
 
-      const res = await fetch(url, options);
+      const res = await apiFetch(endpointPath, options);
       const data = await res.json();
       setApiResponse(JSON.stringify(data, null, 2));
     } catch (e: any) {
