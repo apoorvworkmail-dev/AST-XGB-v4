@@ -16,7 +16,7 @@ import { ModelSelectionPanel } from './components/ModelSelectionPanel';
 import { MultiModelComparisonView, MultiModelResults } from './components/MultiModelComparisonView';
 import { apiFetch as utilityApiFetch, checkBackendHealth } from './utils/api';
 
-const API_BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost:8000/api/v1';
+const API_BASE_URL = import.meta.env.VITE_API_URL || 'https://ast-xgb-v4.onrender.com/';
 
 interface PredictionResult {
   predicted_price_inr: number;
