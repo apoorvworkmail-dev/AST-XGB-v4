@@ -5,34 +5,69 @@
 export const getApiBaseUrl = (): string => {
   const envUrl = import.meta.env.VITE_API_URL;
   if (envUrl && typeof envUrl === 'string' && envUrl.trim().length > 0) {
-    return envUrl.replace(/\/+$/, '');
+    const trimmed = envUrl.trim().replace(/\/+$/, '');
+    if (trimmed.endsWith('/api/v1')) {
+      return trimmed;
+    }
+    return `${trimmed}/api/v1`;
   }
   return 'http://localhost:8000/api/v1';
 };
 
 /**
+ * Normalizes endpoint paths by stripping redundant prefixes (e.g. `/api/v1`, domain names)
+ * and ensuring a clean leading slash subpath like `/predict` or `/health`.
+ */
+export const normalizeSubpath = (path: string): string => {
+  let cleaned = path.trim();
+  // Strip protocol and host if full URL passed
+  cleaned = cleaned.replace(/^https?:\/\/[^\/]+/, '');
+  // Strip repeated /api/v1 or /api prefixes
+  cleaned = cleaned.replace(/^(\/api\/v1|\/api)+/i, '');
+  if (!cleaned.startsWith('/')) {
+    cleaned = `/${cleaned}`;
+  }
+  return cleaned;
+};
+
+/**
  * Robust API fetch wrapper.
- * First attempts relative fetch `/api/v1${path}`.
- * If that throws a network error or returns a non-2xx HTTP status (e.g. 404, 502, 504),
- * automatically falls back to absolute `getApiBaseUrl()${path}`.
+ * First attempts relative fetch `/api/v1${subpath}`.
+ * If relative fetch fails with network error or non-2xx HTTP status (e.g. 404, 502, 504),
+ * automatically falls back to absolute `${getApiBaseUrl()}${subpath}`.
  */
 export const apiFetch = async (path: string, options?: RequestInit): Promise<Response> => {
-  const normalizedPath = path.startsWith('/') ? path : `/${path}`;
-  const relativeUrl = `/api/v1${normalizedPath}`;
-  const absoluteUrl = `${getApiBaseUrl()}${normalizedPath}`;
+  const subpath = normalizeSubpath(path);
+  const relativeUrl = `/api/v1${subpath}`;
+  const baseUrl = getApiBaseUrl();
+  const absoluteUrl = `${baseUrl}${subpath}`;
 
+  let relativeRes: Response | null = null;
   try {
-    const res = await fetch(relativeUrl, options);
-    // Check if relative fetch succeeded with 2xx HTTP status
-    if (res.ok) {
-      return res;
+    relativeRes = await fetch(relativeUrl, options);
+    if (relativeRes.ok) {
+      return relativeRes;
     }
   } catch (_) {
-    // Network error on relative fetch (e.g., host unreachable)
+    // Relative fetch failed due to network error (e.g. no proxy)
+    relativeRes = null;
   }
 
-  // Fallback to direct absolute URL (http://localhost:8000/api/v1...)
-  return fetch(absoluteUrl, options);
+  // Attempt absolute fetch
+  try {
+    const absRes = await fetch(absoluteUrl, options);
+    if (absRes.ok) {
+      return absRes;
+    }
+    // Return non-ok response if available (for JSON error extraction)
+    return absRes;
+  } catch (err: any) {
+    // If relative returned a response (even non-200 like 404), return it as backup
+    if (relativeRes) {
+      return relativeRes;
+    }
+    throw new Error(`Backend server unreachable at ${absoluteUrl}. Please verify FastAPI is running on http://localhost:8000.`);
+  }
 };
 
 export interface HealthCheckResult {
