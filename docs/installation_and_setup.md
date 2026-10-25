@@ -19,8 +19,8 @@
 
 ### Step 1: Clone Repository & Create Virtual Environment
 ```bash
-# Navigate to project directory
-cd c:\Users\apoorv mishra\Desktop\Ml_project
+# Navigate to project root directory
+cd path/to/Ml_project
 
 # Create virtual environment
 python -m venv venv
@@ -40,7 +40,7 @@ pip install -r requirements.txt
 ### Step 3: Install Frontend Dependencies
 ```bash
 cd frontend
-npm install
+npm ci
 cd ..
 ```
 
@@ -50,8 +50,8 @@ cd ..
 
 ### Running Automated Test Suites
 ```bash
-# Execute master test suite (all 28 tests):
-python -X utf8 scratch/run_all_tests.py
+# Execute complete regression test suite (all 39 tests):
+pytest tests/ backend/tests/ -v
 ```
 
 ### Starting Backend FastAPI API Server
@@ -60,13 +60,14 @@ python -m uvicorn backend.app.main:app --reload --port 8000
 ```
 *   **API Base**: `http://localhost:8000`
 *   **Swagger API Docs**: `http://localhost:8000/docs`
+*   **Health Checks**: `http://localhost:8000/api/v1/health` and `/healthz`
 
 ### Starting Frontend React Web Console
 ```bash
 cd frontend
-npm run dev
+npm run dev:frontend
 ```
-*   **Web Dashboard**: `http://localhost:5173`
+*   **Web Dashboard**: `http://localhost:3000`
 
 ---
 

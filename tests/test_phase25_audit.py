@@ -166,5 +166,16 @@ def run_all_phase25_audits():
     print("PHASE 25 AUDIT STATUS: PASS  ✅")
     print("========================================================================")
 
+def test_phase25_complete_audit():
+    """Pytest hook to execute all Phase 25 security, performance, ML safety and regression audits."""
+    audit_security_path_traversal()
+    audit_security_stack_trace_exposure()
+    audit_security_model_path_isolation()
+    audit_ml_safety_leakage_isolation()
+    audit_ml_safety_frozen_model()
+    audit_performance_latency_and_caching()
+    audit_regression_boundary_cases()
+
 if __name__ == '__main__':
     run_all_phase25_audits()
+

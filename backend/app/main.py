@@ -15,7 +15,8 @@ if str(BASE_DIR) not in sys.path:
 from fastapi import FastAPI, HTTPException, Request
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import JSONResponse
-from backend.app.routers import predict, explain, counterfactual, market
+from backend.app.config import settings
+from backend.app.routers import predict, explain, counterfactual, market, account
 from src.models.inference import pipeline_instance
 
 app = FastAPI(
@@ -26,18 +27,21 @@ app = FastAPI(
     redoc_url="/redoc"
 )
 
+# Security headers middleware
+@app.middleware("http")
+async def add_security_headers(request: Request, call_next):
+    response = await call_next(request)
+    response.headers["X-Content-Type-Options"] = "nosniff"
+    response.headers["X-Frame-Options"] = "DENY"
+    response.headers["Referrer-Policy"] = "strict-origin-when-cross-origin"
+    return response
+
 # Enable CORS for frontend integration
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=[
-        "https://ast-xgb-v4.vercel.app",
-        "http://localhost:3000",
-        "http://localhost:5173",
-        "http://127.0.0.1:3000",
-        "*",
-    ],
+    allow_origins=settings.CORS_ORIGINS,
     allow_credentials=True,
-    allow_methods=["*"],
+    allow_methods=["GET", "POST", "PUT", "DELETE", "OPTIONS"],
     allow_headers=["*"],
 )
 
@@ -46,6 +50,7 @@ app.include_router(predict.router)
 app.include_router(explain.router)
 app.include_router(counterfactual.router)
 app.include_router(market.router)
+app.include_router(account.router)
 
 
 @app.get("/")
@@ -60,6 +65,7 @@ async def root():
 
 @app.get("/health")
 @app.get("/api/v1/health")
+@app.get("/healthz")
 async def health_check():
     """Production health check endpoint verifying model artifact loading."""
     return {

@@ -75,3 +75,51 @@ def test_market_state_endpoint():
     assert "active_regime" in data
     assert "growth_3m_pct" in data
 
+
+def test_market_cities_endpoint():
+    response = client.get("/api/v1/market/cities")
+    assert response.status_code == 200
+    data = response.json()
+    assert "cities" in data
+    assert len(data["cities"]) >= 7
+
+
+def test_market_localities_endpoint():
+    response = client.get("/api/v1/market/localities?city=Bengaluru")
+    assert response.status_code == 200
+    data = response.json()
+    assert "localities" in data
+    assert data["count"] > 0
+
+
+def test_market_locality_details_endpoint():
+    response = client.get("/api/v1/market/locality-details?city=Bengaluru&locality=Whitefield")
+    assert response.status_code == 200
+    data = response.json()
+    assert data["locality"] == "Whitefield"
+    assert "price_stats" in data
+    assert "ppsf_stats" in data
+    assert "ppsf_histogram" in data
+    assert "property_types" in data
+    assert "environment" in data
+    assert "macro" in data
+    assert "provenance" in data
+
+
+def test_market_trends_endpoint():
+    response = client.get("/api/v1/market/trends?city=Bengaluru")
+    assert response.status_code == 200
+    data = response.json()
+    assert "nhb_series" in data
+    assert len(data["nhb_series"]) >= 20
+    assert "rbi_series" in data
+
+
+def test_market_compare_endpoint():
+    response = client.get("/api/v1/market/compare?city=Bengaluru&localities=Whitefield,Electronic City")
+    assert response.status_code == 200
+    data = response.json()
+    assert "comparison" in data
+    assert len(data["comparison"]) == 2
+
+

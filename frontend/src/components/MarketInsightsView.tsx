@@ -80,11 +80,31 @@ export const MarketInsightsView: React.FC<MarketInsightsViewProps> = ({ city, pr
             Actual real-world property valuations, price per sqft rates, and macroeconomic indices across 7 Indian metro cities.
           </p>
         </div>
-        <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
-          <span style={{ fontSize: '13px', fontWeight: 600, color: 'var(--text-muted)' }}>Selected Target City:</span>
-          <span style={{ fontSize: '14px', fontWeight: 700, padding: '6px 14px', borderRadius: '8px', background: 'var(--primary-indigo)', color: '#fff' }}>
-            {city}
-          </span>
+        <div style={{ display: 'flex', alignItems: 'center', gap: '12px', flexWrap: 'wrap' }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+            <span style={{ fontSize: '13px', fontWeight: 600, color: 'var(--text-muted)' }}>Target City:</span>
+            <span style={{ fontSize: '13px', fontWeight: 700, padding: '5px 12px', borderRadius: '8px', background: 'var(--primary-indigo)', color: '#fff' }}>
+              {city}
+            </span>
+          </div>
+          <a
+            href={`/market-insights?city=${encodeURIComponent(city)}`}
+            style={{
+              display: 'inline-flex',
+              alignItems: 'center',
+              gap: '6px',
+              padding: '6px 14px',
+              borderRadius: '8px',
+              background: 'var(--success-green)',
+              color: '#ffffff',
+              fontSize: '13px',
+              fontWeight: 700,
+              textDecoration: 'none',
+              boxShadow: 'var(--shadow-sm)',
+            }}
+          >
+            <span>Explore Locality Analytics →</span>
+          </a>
         </div>
       </div>
 

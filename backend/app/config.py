@@ -20,6 +20,16 @@ class Settings:
     MODEL_DIR: Path = Path(os.getenv("MODEL_DIR", BASE_DIR / "models" / "xgboost_final_v4"))
     
     # CORS Allowed Origins
-    CORS_ORIGINS: List[str] = os.getenv("CORS_ORIGINS", "*").split(",")
+    DEFAULT_ORIGINS = (
+        "https://ast-xgb-v4.vercel.app,"
+        "http://localhost:3000,"
+        "http://localhost:5173,"
+        "http://127.0.0.1:3000,"
+        "http://localhost:80,"
+        "http://localhost"
+    )
+    CORS_ORIGINS: List[str] = [
+        o.strip() for o in os.getenv("CORS_ORIGINS", DEFAULT_ORIGINS).split(",") if o.strip()
+    ]
 
 settings = Settings()

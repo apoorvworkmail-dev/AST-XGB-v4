@@ -1,13 +1,15 @@
 """
-FastAPI Router: /api/v1/market-state
-Exposes metropolitan macro state indicators, active regime distribution,
-and actual real-world property valuations across all 7 Indian metro cities.
+FastAPI Router: /api/v1/market
+Exposes empirical metropolitan macro state indicators, historical NHB RESIDEX trends,
+locality-level price distributions, macroeconomic context, and locality-to-locality comparison.
 """
 
-from fastapi import APIRouter
+from typing import List, Optional
+from fastapi import APIRouter, Query, HTTPException
 from backend.app.schemas import MarketStateResponseSchema
+from backend.app.services.market_service import market_service
 
-router = APIRouter(prefix="/api/v1", tags=["Market Macro State"])
+router = APIRouter(prefix="/api/v1", tags=["Market & Locality Analytics"])
 
 CITY_MARKET_DATA = [
     {
@@ -89,8 +91,10 @@ CITY_MARKET_DATA = [
     }
 ]
 
+
 @router.get("/market-state", response_model=MarketStateResponseSchema)
 async def get_market_state():
+    """Returns backward-compatible macro state schema."""
     return MarketStateResponseSchema(
         active_regime="Growth",
         growth_3m_pct=4.85,
@@ -100,3 +104,66 @@ async def get_market_state():
         interest_rate=3.75,
         city_prices=CITY_MARKET_DATA
     )
+
+
+@router.get("/market/cities")
+async def get_market_cities():
+    """Returns real summary metrics for 7 Indian metropolitan cities."""
+    cities = market_service.get_cities_summary()
+    return {"cities": cities}
+
+
+@router.get("/market/localities")
+async def get_market_localities(
+    city: str = Query("Bengaluru", description="Target city name"),
+    min_sample: int = Query(1, description="Minimum listings threshold")
+):
+    """Returns empirical localities with listing count and median PPSF for a city."""
+    localities = market_service.get_localities_for_city(city, min_sample=min_sample)
+    return {
+        "city": city,
+        "count": len(localities),
+        "localities": localities
+    }
+
+
+@router.get("/market/locality-details")
+async def get_locality_details(
+    city: str = Query("Bengaluru", description="City name"),
+    locality: str = Query("Whitefield", description="Locality name")
+):
+    """Returns full empirical locality statistics, distributions, infrastructure, and macro context."""
+    details = market_service.get_locality_details(city, locality)
+    if not details:
+        raise HTTPException(
+            status_code=404,
+            detail=f"No listing records found for locality '{locality}' in city '{city}'."
+        )
+    return details
+
+
+@router.get("/market/trends")
+async def get_market_trends(
+    city: str = Query("Bengaluru", description="City name")
+):
+    """Returns historical quarterly NHB RESIDEX trends and monthly RBI/MoSPI/CPCB time series."""
+    trends = market_service.get_market_trends(city)
+    return trends
+
+
+@router.get("/market/compare")
+async def compare_localities(
+    city: str = Query("Bengaluru", description="City name"),
+    localities: str = Query(..., description="Comma-separated list of locality names")
+):
+    """Returns side-by-side comparison matrix for up to 4 localities."""
+    loc_list = [l.strip() for l in localities.split(",") if l.strip()]
+    if not loc_list:
+        raise HTTPException(status_code=400, detail="Please provide at least one locality name to compare.")
+
+    results = market_service.compare_localities(city, loc_list[:4])
+    return {
+        "city": city,
+        "count": len(results),
+        "comparison": results
+    }
